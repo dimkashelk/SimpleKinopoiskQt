@@ -6,23 +6,73 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1200</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+background-color: rgb(31, 31, 31);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <layout class="QVBoxLayout" name="left_layout">
+       <layout class="QVBoxLayout" name="left_layout" stretch="0,0">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QToolButton" name="toolButton">
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton {
+color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);
+height:  auto;
+min-width: 150px;
+width:250px;
+border-radius: 10px;
+text-align:bottom;
+padding-top: 10px;
+padding-bottom: 10px;
+icon-position: left;
+}
+
+QToolButton:hover {
+background-color:rgb(47, 47, 47);
+}</string>
+          </property>
           <property name="text">
            <string>Главная</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>home.png</normaloff>home.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+          <property name="autoRaise">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -40,6 +90,9 @@
             <height>549</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -48,8 +101,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>73</width>
-             <height>547</height>
+             <width>251</width>
+             <height>510</height>
             </rect>
            </property>
           </widget>
@@ -58,11 +111,21 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="right_layout">
+       <layout class="QHBoxLayout" name="right_layout" stretch="0,0">
         <item>
          <layout class="QVBoxLayout" name="popular_layout">
           <item>
            <widget class="QLabel" name="popular_label">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+padding-left: 10px;</string>
+            </property>
             <property name="text">
              <string>Популярное </string>
             </property>
@@ -73,13 +136,13 @@
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents_2">
+            <widget class="QWidget" name="scroll_popular_widget">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>341</width>
-               <height>555</height>
+               <width>452</width>
+               <height>536</height>
               </rect>
              </property>
             </widget>
@@ -91,8 +154,18 @@
          <layout class="QVBoxLayout" name="new_layout">
           <item>
            <widget class="QLabel" name="new_label">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+padding-left: 10px;</string>
+            </property>
             <property name="text">
-             <string>Новое сегодня</string>
+             <string>Главное сегодня</string>
             </property>
            </widget>
           </item>
@@ -101,13 +174,13 @@
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents_3">
+            <widget class="QWidget" name="scroll_new_widget">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>340</width>
-               <height>555</height>
+               <width>451</width>
+               <height>536</height>
               </rect>
              </property>
             </widget>
