@@ -1,13 +1,13 @@
 #ifndef NEWSCARD_H
 #define NEWSCARD_H
 
-#include <QWidget>
+#include <QFrame>
 
 namespace Ui {
 class NewsCard;
 }
 
-class NewsCard : public QWidget
+class NewsCard : public QFrame
 {
     Q_OBJECT
 
