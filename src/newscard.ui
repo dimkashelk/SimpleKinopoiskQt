@@ -10,29 +10,40 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QFrame {
-	border: 4px double white; 
-    padding: 10px;
+	border-radius: 25px;
+    padding: 5px;
 	background-color: rgb(50, 50, 50);
 }
 
-QLabel {
+QLabel, QTextEdit {
 	font: 25 18pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
 	border: 0px double white; 
+	background-color: rgba(255, 255, 255, 0);
 }
 
-</string>
+QTextEdit {
+	font: 25 16pt &quot;Segoe UI Light&quot;;
+}
+
+
+QFrame:hover {
+	background-color: rgb(70, 70, 70);
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="news_label">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -47,14 +58,21 @@ QLabel {
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="news_image">
          <property name="text">
           <string>Изображение</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="textEdit"/>
+        <widget class="QTextEdit" name="news_text">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

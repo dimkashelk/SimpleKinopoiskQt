@@ -6,6 +6,10 @@ NewsCard::NewsCard(QWidget *parent) :
     ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
+
+    this->setMinimumWidth(150);
+
+    this->ui->news_text->setText("TEST TEXT!");
 }
 
 NewsCard::~NewsCard()
