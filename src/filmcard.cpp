@@ -11,6 +11,7 @@ FilmCard::FilmCard(QWidget *parent) : QWidget(parent)
 }
 
 FilmCard::FilmCard(QString film_name, QString film_description, QImage image) {
+    this->setMinimumHeight(500);
     this->film_name = film_name;
     this->description = film_description;
     this->image = image;

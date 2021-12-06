@@ -20,98 +20,26 @@ background-color: rgb(31, 31, 31);</string>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <layout class="QVBoxLayout" name="left_layout" stretch="0,0">
-        <property name="spacing">
-         <number>6</number>
-        </property>
-        <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
-        </property>
-        <item>
-         <widget class="QToolButton" name="toolButton">
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>18</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QToolButton {
-color: rgb(255, 255, 255);
-background-color: rgba(255, 255, 255, 0);
-height:  auto;
-min-width: 150px;
-width:250px;
-border-radius: 10px;
-text-align:bottom;
-padding-top: 10px;
-padding-bottom: 10px;
-icon-position: left;
-}
-
-QToolButton:hover {
-background-color:rgb(47, 47, 47);
-}</string>
-          </property>
-          <property name="text">
-           <string>Главная</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>home.png</normaloff>home.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
-          </property>
-          <property name="autoRaise">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QScrollArea" name="scrollArea">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>385</width>
-            <height>549</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_4">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>251</width>
-             <height>510</height>
-            </rect>
-           </property>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="right_layout" stretch="0,0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="main">
+       <attribute name="title">
+        <string>Главная</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <layout class="QVBoxLayout" name="popular_layout">
           <item>
@@ -132,7 +60,7 @@ padding-left: 10px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QScrollArea" name="popular_scroll">
+           <widget class="QScrollArea" name="scroll_area_popular">
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
@@ -141,17 +69,22 @@ padding-left: 10px;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>452</width>
-               <height>536</height>
+               <width>561</width>
+               <height>516</height>
               </rect>
              </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <layout class="QVBoxLayout" name="popular_scroll"/>
+              </item>
+             </layout>
             </widget>
            </widget>
           </item>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="new_layout">
+         <layout class="QVBoxLayout" name="new_today_layout">
           <item>
            <widget class="QLabel" name="new_label">
             <property name="font">
@@ -179,8 +112,8 @@ padding-left: 10px;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>451</width>
-               <height>536</height>
+               <width>560</width>
+               <height>516</height>
               </rect>
              </property>
             </widget>
@@ -189,8 +122,18 @@ padding-left: 10px;</string>
          </layout>
         </item>
        </layout>
-      </item>
-     </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Фильмы</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Сериалы</string>
+       </attribute>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
