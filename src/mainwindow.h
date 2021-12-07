@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "newscard.h"
 #include <QMainWindow>
 #include <QSqlDatabase>
 
@@ -22,5 +23,7 @@ private:
     QSqlDatabase db;
 
     void change_widget();
+
+    void set_info_news_show(NewsCard *card);
 };
 #endif // MAINWINDOW_H

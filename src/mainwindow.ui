@@ -46,7 +46,7 @@ background-color: rgb(31, 31, 31);</string>
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -132,6 +132,10 @@ background-color: rgb(31, 31, 31);</string>
 	font: 30pt &quot;Segoe UI&quot;;
 	padding-left: 30%;
 	padding-right: 30%;
+}
+
+QLabel#image {
+	color: rgb(255, 255, 255);
 }</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -144,6 +148,13 @@ background-color: rgb(31, 31, 31);</string>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="image">
+                <property name="text">
+                 <string>TextLabel</string>
                 </property>
                </widget>
               </item>

@@ -14,9 +14,15 @@ class NewsCard : public QFrame
 public:
     explicit NewsCard(QWidget *parent = nullptr);
 
-    NewsCard(QWidget *parent, QString title, QString text, QImage image);
+    NewsCard(QWidget *parent, QString title, QString descpription, QString text, QImage image);
 
     ~NewsCard();
+
+    QString get_title();
+
+    QString get_text();
+
+    QImage get_image();
 
 signals:
 
@@ -30,6 +36,7 @@ private:
     Ui::NewsCard *ui;
 
     QImage original_image;
+    QString text;
 
     void send_signal_clicked();
 };

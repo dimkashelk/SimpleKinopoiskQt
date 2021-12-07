@@ -13,12 +13,13 @@ NewsCard::NewsCard(QWidget *parent) :
     this->setMinimumWidth(150);
 }
 
-NewsCard::NewsCard(QWidget *parent, QString title, QString text, QImage image) :
+NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString text, QImage image) :
     QFrame(parent),
     ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
     original_image = image;
+    this->text = text;
 
     this->setMinimumWidth(150);
     this->setMaximumHeight(250);
