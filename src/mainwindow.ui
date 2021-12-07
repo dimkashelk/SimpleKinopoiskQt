@@ -73,7 +73,7 @@ background-color: rgb(31, 31, 31);</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>543</width>
+                   <width>552</width>
                    <height>498</height>
                   </rect>
                  </property>
@@ -87,51 +87,43 @@ background-color: rgb(31, 31, 31);</string>
               </item>
              </layout>
             </item>
+            <item>
+             <layout class="QVBoxLayout" name="new_layout">
+              <item>
+               <widget class="QLabel" name="new_today_label">
+                <property name="text">
+                 <string>Новое сегодня</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scroll_area_new">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scroll_area_widget_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>551</width>
+                   <height>498</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <item>
+                   <layout class="QVBoxLayout" name="new_scroll_2"/>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="page_2"/>
          </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="new_today_layout_2">
-          <item>
-           <widget class="QLabel" name="new_label_2">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>18</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-padding-left: 10px;</string>
-            </property>
-            <property name="text">
-             <string>Главное сегодня</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="new_scroll">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scroll_new_widget">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>560</width>
-               <height>516</height>
-              </rect>
-             </property>
-            </widget>
-           </widget>
-          </item>
-         </layout>
         </item>
        </layout>
       </widget>

@@ -13,6 +13,9 @@ class NewsCard : public QFrame
 
 public:
     explicit NewsCard(QWidget *parent = nullptr);
+
+    NewsCard(QWidget *parent, QString title, QString text, QImage image);
+
     ~NewsCard();
 
 private:
