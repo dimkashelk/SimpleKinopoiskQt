@@ -43,9 +43,16 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString text, QImage image) :
     news_text->setText(text);
 
     news_image->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
+
+    connect(news_label, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 }
 
 NewsCard::~NewsCard()
 {
     delete ui;
+}
+
+
+void NewsCard::send_signal_clicked() {
+    emit clicked();
 }

@@ -18,10 +18,16 @@ public:
 
     ~NewsCard();
 
+signals:
+
+    void clicked();
+
 private:
     Ui::NewsCard *ui;
 
     QImage original_image;
+
+    void send_signal_clicked();
 };
 
 #endif // NEWSCARD_H
