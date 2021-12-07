@@ -24,29 +24,29 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString
     this->setMinimumWidth(150);
     this->setMaximumHeight(250);
 
-    ClickableQLabel *news_label = new ClickableQLabel("text", this);
+    news_label = new ClickableQLabel("text", this);
     this->ui->verticalLayout->addWidget(news_label);
 
     QHBoxLayout *horizontalLayout = new QHBoxLayout(this);
 
-    ClickableQLabel *news_image = new ClickableQLabel("text", this);
+    news_image = new ClickableQLabel("text", this);
     horizontalLayout->addWidget(news_image);
 
-    ClickableQTextEdit *news_text = new ClickableQTextEdit("text", this);
-    horizontalLayout->addWidget(news_text);
-    news_text->setReadOnly(true);
-    news_text->setCursor(Qt::PointingHandCursor);
+    news_description = new ClickableQTextEdit("text", this);
+    horizontalLayout->addWidget(news_description);
+    news_description->setReadOnly(true);
+    news_description->setCursor(Qt::PointingHandCursor);
 
     this->ui->verticalLayout->addLayout(horizontalLayout);
 
     news_label->setText(title);
 
-    news_text->setText(text);
+    news_description->setText(text);
 
     news_image->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
 
     connect(news_label, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
-    connect(news_text, &ClickableQTextEdit::clicked, this, &NewsCard::send_signal_clicked);
+    connect(news_description, &ClickableQTextEdit::clicked, this, &NewsCard::send_signal_clicked);
     connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 }
 
@@ -63,4 +63,17 @@ void NewsCard::send_signal_clicked() {
 
 void NewsCard::mousePressEvent(QMouseEvent *event) {
     emit clicked();
+}
+
+
+QString NewsCard::get_title() {
+    return news_label->text();
+}
+
+QString NewsCard::get_text() {
+    return this->text;
+}
+
+QImage NewsCard::get_image() {
+    return original_image;
 }

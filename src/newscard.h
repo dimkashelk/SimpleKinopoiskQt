@@ -1,6 +1,8 @@
 #ifndef NEWSCARD_H
 #define NEWSCARD_H
 
+#include "clickedqlabel.h"
+#include "clickableqtextedit.h"
 #include <QFrame>
 
 namespace Ui {
@@ -37,6 +39,8 @@ private:
 
     QImage original_image;
     QString text;
+    ClickableQLabel *news_image, *news_label;
+    ClickableQTextEdit *news_description;
 
     void send_signal_clicked();
 };
