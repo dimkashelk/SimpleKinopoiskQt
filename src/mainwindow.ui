@@ -26,6 +26,13 @@ background-color: rgb(31, 31, 31);</string>
         <pointsize>10</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+	color: rgb(255, 255, 255);
+	padding-left: 10px;
+	font: 18pt &quot;Segoe UI&quot;;
+}</string>
+      </property>
       <property name="tabPosition">
        <enum>QTabWidget::West</enum>
       </property>
@@ -41,56 +48,61 @@ background-color: rgb(31, 31, 31);</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <layout class="QVBoxLayout" name="popular_layout">
-          <item>
-           <widget class="QLabel" name="popular_label">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>18</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-padding-left: 10px;</string>
-            </property>
-            <property name="text">
-             <string>Популярное </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="scroll_area_popular">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scroll_popular_widget">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>561</width>
-               <height>516</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
+         <widget class="QStackedWidget" name="stackedWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="news">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QVBoxLayout" name="popular_layout">
               <item>
-               <layout class="QVBoxLayout" name="popular_scroll"/>
+               <widget class="QLabel" name="popular_label">
+                <property name="text">
+                 <string>Популярное</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scroll_area_popular">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scroll_area_widget">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>543</width>
+                   <height>498</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <item>
+                   <layout class="QVBoxLayout" name="popular_scroll"/>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
               </item>
              </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page_2"/>
+         </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="new_today_layout">
+         <layout class="QVBoxLayout" name="new_today_layout_2">
           <item>
-           <widget class="QLabel" name="new_label">
+           <widget class="QLabel" name="new_label_2">
             <property name="font">
              <font>
               <family>Segoe UI</family>
               <pointsize>18</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
