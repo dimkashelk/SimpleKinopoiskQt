@@ -15,22 +15,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->ui->stackedWidget->setCurrentIndex(1);
+
+    this->ui->news_scroll->addWidget(news_title);
+    this->ui->news_scroll->addWidget(news_image_label);
+    this->ui->news_scroll->addWidget(news_text);
+
     this->ui->stackedWidget->setCurrentIndex(0);
 
     db = QSqlDatabase::addDatabase("QSQLITE", "db");
     db.setDatabaseName("db.db");
     db.open();
-
-    QPixmap image("image.jpg");
-    QByteArray inByteArray;
-    QBuffer inBuffer(&inByteArray);
-    inBuffer.open(QIODevice::WriteOnly);
-    image.save(&inBuffer, "JPG");
-
-    QSqlQuery query = QSqlQuery(db);
-    query.prepare("UPDATE news SET image = :imageData WHERE id = 1");
-    query.bindValue(":imageData", inByteArray);
-    query.exec();
 
     QSqlQuery test("SELECT image, title, description, text FROM news WHERE id = 1", db);
     test.next();
@@ -50,8 +45,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::change_widget() {
     NewsCard *send = dynamic_cast<NewsCard*>(sender());
-    set_info_news_show(send);
     if (this->ui->stackedWidget->currentIndex() == 0) {
+        set_info_news_show(send);
         this->ui->stackedWidget->setCurrentIndex(1);
     } else {
         this->ui->stackedWidget->setCurrentIndex(0);
@@ -60,6 +55,28 @@ void MainWindow::change_widget() {
 
 
 void MainWindow::set_info_news_show(NewsCard *card) {
+
+    this->ui->news_scroll->removeWidget(news_title);
+    this->ui->news_scroll->removeWidget(news_image_label);
+    this->ui->news_scroll->removeWidget(news_text);
+
+    news_title = new QTextEdit(this);
+    news_title->setText(card->get_title());
+    news_title->setReadOnly(true);
+    news_title->setAlignment(Qt::AlignHCenter);
+    this->ui->news_scroll->addWidget(news_title);
+
+    QImage image = card->get_image();
+    image = image.scaledToHeight(this->width()*1.0 / 100 * 50);
+    news_image_label = new QLabel(this);
+    news_image_label->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
+    news_image_label->setAlignment(Qt::AlignHCenter);
+    this->ui->news_scroll->addWidget(news_image_label);
+
+    news_text = new QTextEdit(this);
+    news_text->setText(card->get_text());
+    news_text->setReadOnly(true);
+    this->ui->news_scroll->addWidget(news_text);
 
 }
 

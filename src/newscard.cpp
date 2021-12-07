@@ -18,7 +18,7 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString
     ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
-    original_image = image;
+    original_image = new QImage(image);
     this->text = text;
 
     this->setMinimumWidth(150);
@@ -75,5 +75,5 @@ QString NewsCard::get_text() {
 }
 
 QImage NewsCard::get_image() {
-    return original_image;
+    return *original_image;
 }

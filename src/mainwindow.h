@@ -21,6 +21,8 @@ private:
     Ui::MainWindow *ui;
 
     QSqlDatabase db;
+    QTextEdit *news_title = new QTextEdit(this), *news_text = new QTextEdit(this);
+    QLabel *news_image_label = new QLabel(this);
 
     void change_widget();
 

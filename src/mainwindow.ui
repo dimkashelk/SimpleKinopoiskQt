@@ -127,14 +127,8 @@ background-color: rgb(31, 31, 31);</string>
           </widget>
           <widget class="QWidget" name="news_context">
            <property name="styleSheet">
-            <string notr="true">QTextEdit#title {
-	color: rgb(255, 255, 255);
-	font: 30pt &quot;Segoe UI&quot;;
-	padding-left: 30%;
-	padding-right: 30%;
-}
-
-QLabel#image {
+            <string notr="true">QTextEdit {
+	font: 25 36pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
 }</string>
            </property>
@@ -142,20 +136,25 @@ QLabel#image {
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
-               <widget class="QTextEdit" name="title">
-                <property name="lineWrapMode">
-                 <enum>QTextEdit::FixedPixelWidth</enum>
-                </property>
-                <property name="readOnly">
+               <widget class="QScrollArea" name="scrollArea">
+                <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="image">
-                <property name="text">
-                 <string>TextLabel</string>
-                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>1113</width>
+                   <height>536</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <layout class="QVBoxLayout" name="news_scroll"/>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
              </layout>

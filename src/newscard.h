@@ -37,7 +37,7 @@ protected:
 private:
     Ui::NewsCard *ui;
 
-    QImage original_image;
+    QImage *original_image;
     QString text;
     ClickableQLabel *news_image, *news_label;
     ClickableQTextEdit *news_description;
