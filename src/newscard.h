@@ -22,6 +22,10 @@ signals:
 
     void clicked();
 
+protected:
+
+    void mousePressEvent(QMouseEvent* event);
+
 private:
     Ui::NewsCard *ui;
 

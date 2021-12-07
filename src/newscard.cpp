@@ -45,6 +45,8 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString text, QImage image) :
     news_image->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
 
     connect(news_label, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
+    connect(news_text, &ClickableQTextEdit::clicked, this, &NewsCard::send_signal_clicked);
+    connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 }
 
 NewsCard::~NewsCard()
@@ -54,5 +56,10 @@ NewsCard::~NewsCard()
 
 
 void NewsCard::send_signal_clicked() {
+    emit clicked();
+}
+
+
+void NewsCard::mousePressEvent(QMouseEvent *event) {
     emit clicked();
 }
