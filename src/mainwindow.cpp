@@ -15,12 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->ui->stackedWidget->setCurrentIndex(1);
-
-    this->ui->news_scroll->addWidget(news_title);
-    this->ui->news_scroll->addWidget(news_image_label);
-    this->ui->news_scroll->addWidget(news_text);
-
     this->ui->stackedWidget->setCurrentIndex(0);
 
     db = QSqlDatabase::addDatabase("QSQLITE", "db");
@@ -56,9 +50,11 @@ void MainWindow::change_widget() {
 
 void MainWindow::set_info_news_show(NewsCard *card) {
 
-    this->ui->news_scroll->removeWidget(news_title);
-    this->ui->news_scroll->removeWidget(news_image_label);
-    this->ui->news_scroll->removeWidget(news_text);
+    QLayoutItem* item;
+    while ((item = this->ui->news_scroll->takeAt(0)) != NULL) {
+        delete item->widget();
+        delete item;
+    }
 
     news_title = new QTextEdit(this);
     news_title->setText(card->get_title());
