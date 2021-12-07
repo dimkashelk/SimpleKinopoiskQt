@@ -35,7 +35,10 @@ MainWindow::MainWindow(QWidget *parent)
     QImage t;
     t.loadFromData(test.value(0).toByteArray());
     t = t.scaledToWidth(250);
-    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(2).toString(), t));
+    NewsCard *news_card = new NewsCard(this, test.value(1).toString(), test.value(2).toString(), t);
+    this->ui->popular_scroll->addWidget(news_card);
+
+    connect(news_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 }
 
 MainWindow::~MainWindow()
@@ -43,3 +46,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::change_widget() {
+    this->ui->stackedWidget->setCurrentIndex(1);
+}

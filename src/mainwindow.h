@@ -20,5 +20,7 @@ private:
     Ui::MainWindow *ui;
 
     QSqlDatabase db;
+
+    void change_widget();
 };
 #endif // MAINWINDOW_H
