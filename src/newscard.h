@@ -20,6 +20,8 @@ public:
 
 private:
     Ui::NewsCard *ui;
+
+    QImage original_image;
 };
 
 #endif // NEWSCARD_H

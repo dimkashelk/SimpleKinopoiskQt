@@ -1,6 +1,8 @@
 #include "newscard.h"
 #include "ui_newscard.h"
 #include "clickedqlabel.h"
+#include "clickableqtextedit.h"
+#include <QHBoxLayout>
 
 NewsCard::NewsCard(QWidget *parent) :
     QFrame(parent),
@@ -21,23 +23,26 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString text, QImage image) :
     this->setMinimumWidth(150);
     this->setMaximumHeight(250);
 
-    delete this->ui->news_label;
-    delete this->ui->news_text;
-    delete this->ui->news_image;
-
     ClickableQLabel *news_label = new ClickableQLabel("text", this);
     this->ui->verticalLayout->addWidget(news_label);
 
+    QHBoxLayout *horizontalLayout = new QHBoxLayout(this);
+
     ClickableQLabel *news_image = new ClickableQLabel("text", this);
-    this->ui->horizontalLayout->addWidget(news_image);
+    horizontalLayout->addWidget(news_image);
 
+    ClickableQTextEdit *news_text = new ClickableQTextEdit("text", this);
+    horizontalLayout->addWidget(news_text);
+    news_text->setReadOnly(true);
+    news_text->setCursor(Qt::PointingHandCursor);
 
+    this->ui->verticalLayout->addLayout(horizontalLayout);
 
-    this->ui->news_label->setText(title);
+    news_label->setText(title);
 
-    //this->ui->news_text->setText(text);
+    news_text->setText(text);
 
-    this->ui->news_image->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
+    news_image->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
 }
 
 NewsCard::~NewsCard()

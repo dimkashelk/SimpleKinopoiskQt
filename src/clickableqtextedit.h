@@ -2,26 +2,25 @@
 #define CLICKABLEQTEXTEDIT_H
 
 #include <QAbstractItemModel>
+#include <QTextEdit>
 
-class ClickableQTextEdit : public QAbstractItemModel
+class ClickableQTextEdit : public QTextEdit
 {
     Q_OBJECT
 
 public:
-    explicit ClickableQTextEdit(QObject *parent = nullptr);
 
-    // Header:
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    explicit ClickableQTextEdit(QString text="", QWidget *parent=nullptr);
 
-    // Basic functionality:
-    QModelIndex index(int row, int column,
-                      const QModelIndex &parent = QModelIndex()) const override;
-    QModelIndex parent(const QModelIndex &index) const override;
+    ~ClickableQTextEdit();
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+protected:
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    void mousePressEvent(QMouseEvent* event);
+
+signals:
+
+    void clicked();
 
 private:
 };
