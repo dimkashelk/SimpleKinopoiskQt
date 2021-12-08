@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CinemaCard</class>
+ <widget class="QFrame" name="CinemaCard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>335</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame {
+	border-radius: 25px;
+    padding: 5px;
+	background-color: rgb(50, 50, 50);
+}
+
+QLabel, QTextEdit {
+	font: 25 18pt &quot;Segoe UI Light&quot;;
+	color: rgb(255, 255, 255);
+	border: 0px solid rgba(255, 255, 255, 0); 
+	border-radius: 25px;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QTextEdit {
+	font: 25 16pt &quot;Segoe UI Light&quot;;
+}
+
+
+QFrame:hover {
+	background-color: rgb(70, 70, 70);
+}</string>
+  </property>
+  <widget class="QLabel" name="image">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>341</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>image</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

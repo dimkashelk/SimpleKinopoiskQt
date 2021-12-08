@@ -61,7 +61,7 @@ QTabWidget::pane {
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -339,7 +339,7 @@ QPushButton:hover {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="cinema">
        <attribute name="icon">
         <iconset>
          <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/films.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/films.png</iconset>
@@ -347,6 +347,38 @@ QPushButton:hover {
        <attribute name="title">
         <string/>
        </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QStackedWidget" name="cinema_stacked">
+            <widget class="QWidget" name="collection_cinema_widget">
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <layout class="QVBoxLayout" name="collection_cinema">
+                <item>
+                 <widget class="QLabel" name="label">
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+	color: rgb(255, 255, 255);
+	font: 25 48pt &quot;Segoe UI Light&quot;;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Коллекция фильмов </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_2"/>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="icon">
