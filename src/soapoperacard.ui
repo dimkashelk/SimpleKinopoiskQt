@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CinemaCard</class>
- <widget class="QFrame" name="CinemaCard">
+ <class>SoapOperaCard</class>
+ <widget class="QFrame" name="SoapOperaCard">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>335</width>
+    <width>355</width>
     <height>200</height>
    </rect>
   </property>
@@ -20,27 +20,22 @@
 	background-color: rgb(50, 50, 50);
 }
 
-QLabel, QTextEdit {
+QLabel {
 	font: 25 18pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0);
 }
 
-QTextEdit {
-	font: 25 16pt &quot;Segoe UI Light&quot;;
-}
-
-
 QFrame:hover {
 	background-color: rgb(70, 70, 70);
 }</string>
   </property>
-  <widget class="QLabel" name="image">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>341</width>
+     <width>361</width>
      <height>201</height>
     </rect>
    </property>
