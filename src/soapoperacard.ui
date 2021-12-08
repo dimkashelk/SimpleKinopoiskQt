@@ -1,16 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SoapOperaCard</class>
- <widget name="SoapOperaCard" class="QFrame">
+ <widget class="QFrame" name="SoapOperaCard">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>355</width>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame {
+	border-radius: 25px;
+    padding: 5px;
+	background-color: rgb(50, 50, 50);
+}
+
+QLabel {
+	font: 25 18pt &quot;Segoe UI Light&quot;;
+	color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QFrame:hover {
+	background-color: rgb(70, 70, 70);
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>361</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>image</string>
+   </property>
+  </widget>
  </widget>
+ <resources/>
+ <connections/>
 </ui>
