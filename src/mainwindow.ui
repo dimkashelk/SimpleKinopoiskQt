@@ -46,7 +46,7 @@ background-color: rgb(31, 31, 31);</string>
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -76,7 +76,7 @@ background-color: rgb(31, 31, 31);</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>511</width>
+                   <width>522</width>
                    <height>498</height>
                   </rect>
                  </property>
@@ -109,7 +109,7 @@ background-color: rgb(31, 31, 31);</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>511</width>
+                   <width>521</width>
                    <height>498</height>
                   </rect>
                  </property>
@@ -137,8 +137,28 @@ background-color: rgb(31, 31, 31);</string>
                 <height>540</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: rgb(70, 70, 70);
+}</string>
+              </property>
               <property name="text">
-               <string>Вперед</string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-right.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-right.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -168,8 +188,28 @@ background-color: rgb(31, 31, 31);</string>
                   <height>540</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: rgb(70, 70, 70);
+}</string>
+                </property>
                 <property name="text">
-                 <string>Назад</string>
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-left.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-left.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -183,7 +223,7 @@ background-color: rgb(31, 31, 31);</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1032</width>
+                   <width>1053</width>
                    <height>536</height>
                   </rect>
                  </property>
