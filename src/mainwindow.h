@@ -24,6 +24,8 @@ private slots:
 
     void on_back_clicked();
 
+    void on_forward_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -34,5 +36,7 @@ private:
     void change_widget();
 
     void set_info_news_show(NewsCard *card);
+
+    bool news_info = false;
 };
 #endif // MAINWINDOW_H

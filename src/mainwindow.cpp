@@ -42,6 +42,7 @@ void MainWindow::change_widget() {
     if (this->ui->stackedWidget->currentIndex() == 0) {
         set_info_news_show(send);
         this->ui->stackedWidget->setCurrentIndex(1);
+        news_info = true;
     } else {
         this->ui->stackedWidget->setCurrentIndex(0);
     }
@@ -83,5 +84,13 @@ void MainWindow::on_title_textChanged()
 void MainWindow::on_back_clicked()
 {
     this->ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_forward_clicked()
+{
+    if (news_info) {
+        this->ui->stackedWidget->setCurrentIndex(1);
+    }
 }
 
