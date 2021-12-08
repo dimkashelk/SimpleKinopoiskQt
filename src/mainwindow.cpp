@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "newscard.h"
 #include "cinemacard.h"
+#include "soapoperacard.h"
 #include <Qt>
 #include <QSqlDatabase>
 #include <QImage>
@@ -32,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     CinemaCard *cinema_test = new CinemaCard(this);
     this->ui->collection_cinema->addWidget(cinema_test);
+
 
     connect(news_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 }

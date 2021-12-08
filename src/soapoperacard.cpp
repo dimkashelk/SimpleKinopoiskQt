@@ -6,6 +6,8 @@ SoapOperaCard::SoapOperaCard(QWidget *parent) :
     ui(new Ui::SoapOperaCard)
 {
     ui->setupUi(this);
+
+    this->setMaximumSize(355, 200);
 }
 
 SoapOperaCard::~SoapOperaCard()
