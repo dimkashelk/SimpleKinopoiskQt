@@ -61,7 +61,7 @@ QTabWidget::pane {
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -357,7 +357,7 @@ QPushButton:hover {
               <item>
                <layout class="QVBoxLayout" name="collection_cinema">
                 <item>
-                 <widget class="QLabel" name="label">
+                 <widget class="QLabel" name="label_cinema">
                   <property name="styleSheet">
                    <string notr="true">QLabel {
 	color: rgb(255, 255, 255);
@@ -380,7 +380,7 @@ QPushButton:hover {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="soapopera">
        <attribute name="icon">
         <iconset>
          <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/soap-opera.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/soap-opera.png</iconset>
@@ -388,6 +388,38 @@ QPushButton:hover {
        <attribute name="title">
         <string/>
        </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QStackedWidget" name="soapopera_stack">
+            <widget class="QWidget" name="page">
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <layout class="QVBoxLayout" name="collection_soap_opera">
+                <item>
+                 <widget class="QLabel" name="label_soap_opera">
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+	color: rgb(255, 255, 255);
+	font: 25 48pt &quot;Segoe UI Light&quot;;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Коллекция сериалов</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_3"/>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
