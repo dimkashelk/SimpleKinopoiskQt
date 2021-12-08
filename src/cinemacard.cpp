@@ -6,6 +6,8 @@ CinemaCard::CinemaCard(QWidget *parent) :
     ui(new Ui::CinemaCard)
 {
     ui->setupUi(this);
+
+    this->setMaximumSize(355, 200);
 }
 
 CinemaCard::~CinemaCard()
