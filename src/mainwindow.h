@@ -17,6 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_text_textChanged();
+
+    void on_title_textChanged();
+
+    void on_back_clicked();
+
 private:
     Ui::MainWindow *ui;
 

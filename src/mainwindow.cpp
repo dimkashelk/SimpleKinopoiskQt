@@ -48,31 +48,40 @@ void MainWindow::change_widget() {
 }
 
 
-void MainWindow::set_info_news_show(NewsCard *card) {
+void MainWindow::set_info_news_show(NewsCard *card)
+{
+    this->ui->title->setText("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+    this->ui->title->setAlignment(Qt::AlignHCenter);
+    this->ui->image->setPixmap(QPixmap::fromImage(card->get_image().scaledToWidth(width() / 100 * 70), Qt::AutoColor));
+    this->ui->image->setAlignment(Qt::AlignHCenter);
+    this->ui->text->setText(card->get_text());
+}
 
-    QLayoutItem* item;
-    while ((item = this->ui->news_scroll->takeAt(0)) != NULL) {
-        delete item->widget();
-        delete item;
-    }
 
-    news_title = new QTextEdit(this);
-    news_title->setText(card->get_title());
-    news_title->setReadOnly(true);
-    news_title->setAlignment(Qt::AlignHCenter);
-    this->ui->news_scroll->addWidget(news_title);
+void MainWindow::on_text_textChanged()
+{
+    QString s = ui->text->toPlainText();
+    QFontMetrics m(ui->text->font());
+    QRect widgetRect = ui->text->rect();
+    QRect textRect = m.boundingRect(QRect(0, 0, 0, 0),Qt::TextWordWrap,s);
+    int x = 10;
+    ui->text->setMinimumHeight(textRect.height() + x);
+}
 
-    QImage image = card->get_image();
-    image = image.scaledToHeight(this->width()*1.0 / 100 * 50);
-    news_image_label = new QLabel(this);
-    news_image_label->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
-    news_image_label->setAlignment(Qt::AlignHCenter);
-    this->ui->news_scroll->addWidget(news_image_label);
 
-    news_text = new QTextEdit(this);
-    news_text->setText(card->get_text());
-    news_text->setReadOnly(true);
-    this->ui->news_scroll->addWidget(news_text);
+void MainWindow::on_title_textChanged()
+{
+    QString s = ui->title->toPlainText();
+    QFontMetrics m(ui->title->font());
+    QRect widgetRect = ui->title->rect();
+    QRect textRect = m.boundingRect(QRect(0,0,0,0), Qt::TextWordWrap, s);
+    int x = 10;
+    ui->title->setMinimumHeight(textRect.height() + x);
+}
 
+
+void MainWindow::on_back_clicked()
+{
+    this->ui->stackedWidget->setCurrentIndex(0);
 }
 
