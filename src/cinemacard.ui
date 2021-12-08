@@ -18,7 +18,6 @@
 	border-radius: 25px;
     padding: 5px;
 	background-color: rgb(50, 50, 50);
-	transition: 1s;
 }
 
 QLabel, QTextEdit {
@@ -36,7 +35,6 @@ QTextEdit {
 
 QFrame:hover {
 	background-color: rgb(70, 70, 70);
-	transform: scale(1.2);
 }</string>
   </property>
   <widget class="QLabel" name="image">
