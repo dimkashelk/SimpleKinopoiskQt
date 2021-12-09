@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "newscard.h"
+#include "cinemacard.h"
+#include "soapoperacard.h"
 #include <Qt>
 #include <QSqlDatabase>
 #include <QImage>
@@ -15,19 +17,24 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->ui->tabWidget->setCurrentIndex(0);
+
     this->ui->stackedWidget->setCurrentIndex(0);
 
     db = QSqlDatabase::addDatabase("QSQLITE", "db");
     db.setDatabaseName("db.db");
     db.open();
 
-    QSqlQuery test("SELECT image, title, description, text FROM news WHERE id = 1", db);
+    QSqlQuery test("SELECT image, title, description, text FROM news WHERE id = 5", db);
     test.next();
     QImage t;
     t.loadFromData(test.value(0).toByteArray());
-    t = t.scaledToWidth(250);
     NewsCard *news_card = new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t);
     this->ui->popular_scroll->addWidget(news_card);
+
+    CinemaCard *cinema_test = new CinemaCard(this);
+    this->ui->collection_cinema->addWidget(cinema_test);
+
 
     connect(news_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 }
@@ -51,7 +58,7 @@ void MainWindow::change_widget() {
 
 void MainWindow::set_info_news_show(NewsCard *card)
 {
-    this->ui->title->setText("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+    this->ui->title->setText(card->get_title());
     this->ui->title->setAlignment(Qt::AlignHCenter);
     this->ui->image->setPixmap(QPixmap::fromImage(card->get_image().scaledToWidth(width() / 100 * 70), Qt::AutoColor));
     this->ui->image->setAlignment(Qt::AlignHCenter);
@@ -64,7 +71,7 @@ void MainWindow::on_text_textChanged()
     QString s = ui->text->toPlainText();
     QFontMetrics m(ui->text->font());
     QRect widgetRect = ui->text->rect();
-    QRect textRect = m.boundingRect(QRect(0, 0, 0, 0),Qt::TextWordWrap,s);
+    QRect textRect = m.boundingRect(QRect(0, 0, 0, 0), Qt::TextWordWrap,s);
     int x = 10;
     ui->text->setMinimumHeight(textRect.height() + x);
 }

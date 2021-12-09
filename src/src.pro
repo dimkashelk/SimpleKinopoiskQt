@@ -9,21 +9,27 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cinemacard.cpp \
     clickableqtextedit.cpp \
     clickedqlabel.cpp \
     main.cpp \
     mainwindow.cpp \
-    newscard.cpp
+    newscard.cpp \
+    soapoperacard.cpp
 
 HEADERS += \
+    cinemacard.h \
     clickableqtextedit.h \
     clickedqlabel.h \
     mainwindow.h \
-    newscard.h
+    newscard.h \
+    soapoperacard.h
 
 FORMS += \
+    cinemacard.ui \
     mainwindow.ui \
-    newscard.ui
+    newscard.ui \
+    soapoperacard.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
