@@ -123,8 +123,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>479</width>
-                   <height>496</height>
+                   <width>98</width>
+                   <height>28</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -156,8 +156,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>479</width>
-                   <height>496</height>
+                   <width>98</width>
+                   <height>28</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -265,13 +265,13 @@ QPushButton:hover {
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="new_scroll_are">
+                <widget class="QWidget" name="news_scroll_area">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>969</width>
-                   <height>544</height>
+                   <width>982</width>
+                   <height>556</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">

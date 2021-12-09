@@ -73,7 +73,7 @@ void MainWindow::on_text_textChanged()
     QRect widgetRect = ui->text->rect();
     QRect textRect = m.boundingRect(QRect(0, 0, 0, 0), Qt::TextWordWrap,s);
     int x = 10;
-    ui->text->setMinimumHeight(textRect.height() + x);
+    ui->text->setMinimumHeight(this->ui->news_scroll_area->geometry().height() * 1.2);
 }
 
 
@@ -84,7 +84,8 @@ void MainWindow::on_title_textChanged()
     QRect widgetRect = ui->title->rect();
     QRect textRect = m.boundingRect(QRect(0,0,0,0), Qt::TextWordWrap, s);
     int x = 10;
-    ui->title->setMinimumHeight(textRect.height() + x);
+    ui->title->setMinimumHeight(textRect.height());
+    ui->title->setMaximumHeight(textRect.height() * 1.2);
 }
 
 
