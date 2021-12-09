@@ -31,12 +31,10 @@ MainWindow::MainWindow(QWidget *parent)
     t.loadFromData(test.value(0).toByteArray());
     NewsCard *news_card = new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t);
     this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(news_card);
+    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
+    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
+    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
+    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
 
     CinemaCard *cinema_test = new CinemaCard(this);
     this->ui->collection_cinema->addWidget(cinema_test);
