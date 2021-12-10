@@ -38,5 +38,7 @@ private:
     void set_info_news_show(NewsCard *card);
 
     bool news_info = false;
+
+    void init_cinema();
 };
 #endif // MAINWINDOW_H
