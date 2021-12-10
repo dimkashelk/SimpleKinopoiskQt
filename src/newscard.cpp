@@ -21,7 +21,7 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString
     original_image = new QImage(image);
     this->text = descpription;
 
-    image = image.scaledToWidth(250);
+    image = image.scaledToWidth(200);
 
     this->setMinimumWidth(150);
     this->setMaximumHeight(250);
