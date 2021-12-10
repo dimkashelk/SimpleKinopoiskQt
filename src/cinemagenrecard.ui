@@ -1,16 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>CinemaGenreCard</class>
- <widget name="CinemaGenreCard" class="QFrame">
+ <widget class="QFrame" name="CinemaGenreCard">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>477</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame {
+	border-radius: 25px;
+    padding: 5px;
+	background-color: rgb(50, 50, 50);
+}
+
+QLabel {
+	font: 25 18pt &quot;Segoe UI Light&quot;;
+	color: rgb(255, 255, 255);
+	border: 0px solid rgba(255, 255, 255, 0); 
+	border-radius: 25px;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QFrame:hover {
+	background-color: rgb(70, 70, 70);
+}
+
+QTabBar {	
+	background-color: rgba(255, 255, 255, 0);
+	padding: 10px;
+	border-radius: 10px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+	background-color: rgb(50, 50, 50);
+}
+
+QTabBar::tab {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+	padding: 15px;
+	padding-top: 0px;
+	margin: 10px; 
+}
+
+QTabWidget::pane {
+	border: 0;
+}
+
+QScrollBar:horizontal
+    {
+        background-color: #2A2929;
+		width: 15px;
+        margin: 0px 0px 0px 0px;
+        border-radius: 5px;
+    }
+
+    QScrollBar::handle:horizontal
+    {
+        background-color: grey;         /* #605F5F; */
+        min-height: 3px;
+        border-radius: 5px;
+    }
+
+    QScrollBar::sub-line:horizontal
+    {
+        margin: 0px 0px 0px 0px;
+        border-image: none;
+        height: 0px;
+        width: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal
+    {
+        margin: 0px 0px 0px 0px;
+        height: 0px;
+        width: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:horizontal:hover,QScrollBar::sub-line:horizontal:on
+    {
+        height: 0px;
+        width: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal:hover, QScrollBar::add-line:horizontal:on
+    {
+        height: 0px;
+        width: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+    {
+        background: none;
+		background-color: rgba(255, 255, 255, 0);
+    }
+
+    QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+    {
+        background: none;
+		background-color: rgba(255, 255, 255, 0);
+    }</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Название жанра</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>439</width>
+        <height>214</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
+ <resources/>
+ <connections/>
 </ui>
