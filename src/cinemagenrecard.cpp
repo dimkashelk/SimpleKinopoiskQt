@@ -1,5 +1,7 @@
 #include "cinemagenrecard.h"
 #include "ui_cinemagenrecard.h"
+#include "clickedqlabel.h"
+#include "cinemacard.h"
 #include <QSqlQuery>
 
 CinemaGenreCard::CinemaGenreCard(QWidget *parent) :
@@ -15,7 +17,7 @@ CinemaGenreCard::~CinemaGenreCard()
 }
 
 
-CinemaGenreCard::CinemaGenreCard(QWidget *parent, QString id_genre) :
+CinemaGenreCard::CinemaGenreCard(QWidget *parent, QString id_genre, QString name_genre) :
     QFrame(parent),
     ui(new Ui::CinemaGenreCard)
 {
@@ -30,17 +32,33 @@ CinemaGenreCard::CinemaGenreCard(QWidget *parent, QString id_genre) :
     cinema_query.bindValue(":genreId", id_genre);
     cinema_query.exec();
 
-    QList<QString> cinemas;
+    QList<QByteArray> cinemas;
     if (cinema_query.isActive()) {
         while (cinema_query.next()) {
-            cinemas.append(cinema_query.value(0).toString());
+            cinemas.append(cinema_query.value(0).toByteArray());
         }
     }
 
-    QSet<QString> five_cinema;
+    QSet<QByteArray> five_cinema;
     while (five_cinema.size() < 5) {
         five_cinema.insert(cinemas[rand() % cinemas.size()]);
     }
 
+    ClickableQLabel *label = new ClickableQLabel(name_genre, this);
+    this->ui->qMain->addWidget(label);
+
+    QScrollArea *scrollArea = new QScrollArea(this);
+    QWidget *scrollAreaWidget = new QWidget(this);
+    QHBoxLayout *cinema = new QHBoxLayout(this);
+
+    for (auto i: five_cinema) {
+        QImage dop;
+        dop.loadFromData(i);
+        CinemaCard *card = new CinemaCard(this);
+
+    }
+
+    scrollAreaWidget->setLayout(cinema);
+    scrollArea->addScrollBarWidget(scrollAreaWidget, Qt::AlignCenter);
 
 }

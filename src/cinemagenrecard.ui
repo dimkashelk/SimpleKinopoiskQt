@@ -14,14 +14,14 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame {
+   <string notr="true">QFrame, QWidget {
 	border-radius: 25px;
     padding: 5px;
 	background-color: rgb(50, 50, 50);
 }
 
 QLabel {
-	font: 25 18pt &quot;Segoe UI Light&quot;;
+	font: 25 25pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
 	border: 0px solid rgba(255, 255, 255, 0); 
 	border-radius: 25px;
@@ -118,28 +118,37 @@ QScrollBar:horizontal
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Название жанра</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>439</width>
-        <height>214</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
+    <layout class="QVBoxLayout" name="main">
+     <item>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>437</width>
+          <height>199</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="cinema"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Название жанра</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
