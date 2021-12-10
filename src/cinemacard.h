@@ -12,11 +12,18 @@ class CinemaCard : public QFrame
     Q_OBJECT
 
 public:
+
     explicit CinemaCard(QWidget *parent = nullptr);
+
+    CinemaCard(QImage image, QString title, QWidget *parent = nullptr);
+
     ~CinemaCard();
 
 private:
+
     Ui::CinemaCard *ui;
+
+
 };
 
 #endif // CINEMACARD_H
