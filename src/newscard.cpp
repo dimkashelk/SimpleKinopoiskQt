@@ -21,7 +21,7 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString
     original_image = new QImage(image);
     this->text = descpription;
 
-    image = image.scaledToWidth(200);
+    image = image.scaledToWidth(250);
 
     this->setMinimumWidth(150);
     this->setMaximumHeight(250);
@@ -52,6 +52,20 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString descpription, QString
     connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 }
 
+NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString descpription, QString text, QImage image) 
+{
+	this->NewsCard(parent, title, descripton, text, image);
+	
+	this->id_news = id;
+}
+
+NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views) 
+{
+	this->NewsCard(parent, id, title, description, text, image);
+	
+	this->count_views = count_views.toInt();
+}
+
 NewsCard::~NewsCard()
 {
     delete ui;
@@ -78,4 +92,16 @@ QString NewsCard::get_text() {
 
 QImage NewsCard::get_image() {
     return *original_image;
+}
+
+QString NewsCard::get_id_news() {
+	return this->id_news;
+}
+
+void NewsCard::set_count_views(int count) {
+	this->count_views = count;
+}
+
+void NewsCard::increase_count_views() {
+	this->count_views++;
 }
