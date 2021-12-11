@@ -52,7 +52,9 @@ NewsCard::NewsCard(QWidget *parent, QString title, QString description, QString 
     connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 }
 
-NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image)
+NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image) :
+    QFrame(parent),
+    ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
     original_image = new QImage(image);
@@ -91,7 +93,9 @@ NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString descripti
 	this->id_news = id;
 }
 
-NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views) 
+NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views) :
+    QFrame(parent),
+    ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
     original_image = new QImage(image);
@@ -128,6 +132,8 @@ NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString descripti
     connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 
     this->id_news = id;
+
+    qDebug() << "Ok";
 	
 	this->count_views = count_views.toInt();
 }
