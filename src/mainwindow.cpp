@@ -114,7 +114,7 @@ void MainWindow::init_popular()
 
 void MainWindow::init_new_news() 
 {
-	QSqlQuery get_10_new_news("SELECT id, title, description, text, image, count_views FROM news LIMIT 10", db);
+    QSqlQuery get_10_new_news("SELECT id, title, description, text, image, count_views FROM news ORDER BY date LIMIT 10", db);
 	if (get_10_new_news.isActive()) {
 		while (get_10_new_news.next()) {
             NewsCard *new_card = new NewsCard(this, get_10_new_news.value(0).toString(), get_10_new_news.value(1).toString(), get_10_new_news.value(3).toString(), get_10_new_news.value(2).toString(), QImage::fromData(get_10_new_news.value(4).toByteArray()), get_10_new_news.value(5).toString());
@@ -123,18 +123,3 @@ void MainWindow::init_new_news()
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
