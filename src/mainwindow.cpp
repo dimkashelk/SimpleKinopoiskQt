@@ -103,7 +103,7 @@ void MainWindow::init_popular()
 	QSqlQuery get_10_news("SELECT id, title, description, text, image, count_views FROM news ORDER BY count_views DESC LIMIT 10", db);
 	if (get_10_news.isActive()) {
         while (get_10_news.next()) {
-            NewsCard *new_card = new NewsCard(this, get_10_news.value(0).toString(), get_10_news.value(1).toString(), get_10_news.value(2).toString(), get_10_news.value(3).toString(), QImage::fromData(get_10_news.value(4).toByteArray()), get_10_news.value(5).toString());
+            NewsCard *new_card = new NewsCard(this, get_10_news.value(0).toString(), get_10_news.value(1).toString(), get_10_news.value(3).toString(), get_10_news.value(2).toString(), QImage::fromData(get_10_news.value(4).toByteArray()), get_10_news.value(5).toString());
 			this->ui->popular_scroll->addWidget(new_card);
             connect(new_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 		}
@@ -116,7 +116,7 @@ void MainWindow::init_new_news()
 	QSqlQuery get_10_new_news("SELECT id, title, description, text, image, count_views FROM news LIMIT 10", db);
 	if (get_10_new_news.isActive()) {
 		while (get_10_new_news.next()) {
-            NewsCard *new_card = new NewsCard(this, get_10_new_news.value(0).toString(), get_10_new_news.value(1).toString(), get_10_new_news.value(2).toString(), get_10_new_news.value(3).toString(), QImage::fromData(get_10_new_news.value(4).toByteArray()), get_10_new_news.value(5).toString());
+            NewsCard *new_card = new NewsCard(this, get_10_new_news.value(0).toString(), get_10_new_news.value(1).toString(), get_10_new_news.value(3).toString(), get_10_new_news.value(2).toString(), QImage::fromData(get_10_new_news.value(4).toByteArray()), get_10_new_news.value(5).toString());
             this->ui->new_scroll->addWidget(new_card);
             connect(new_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 		}

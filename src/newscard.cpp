@@ -132,8 +132,6 @@ NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString descripti
     connect(news_image, &ClickableQLabel::clicked, this, &NewsCard::send_signal_clicked);
 
     this->id_news = id;
-
-    qDebug() << "Ok";
 	
 	this->count_views = count_views.toInt();
 }
