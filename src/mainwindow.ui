@@ -90,7 +90,7 @@ QTabWidget::pane {
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -123,8 +123,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>479</width>
-                   <height>496</height>
+                   <width>486</width>
+                   <height>518</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -156,13 +156,13 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>479</width>
-                   <height>496</height>
+                   <width>486</width>
+                   <height>518</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
                   <item>
-                   <layout class="QVBoxLayout" name="new_scroll_2"/>
+                   <layout class="QVBoxLayout" name="new_scroll"/>
                   </item>
                  </layout>
                 </widget>
@@ -270,8 +270,8 @@ QPushButton:hover {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>969</width>
-                   <height>544</height>
+                   <width>982</width>
+                   <height>556</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">
