@@ -90,7 +90,7 @@ QTabWidget::pane {
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -355,7 +355,7 @@ QPushButton:hover {
             <widget class="QWidget" name="collection_cinema_widget">
              <layout class="QHBoxLayout" name="horizontalLayout_6">
               <item>
-               <layout class="QVBoxLayout" name="collection_cinema">
+               <layout class="QVBoxLayout" name="collection_cinema_3">
                 <item>
                  <widget class="QLabel" name="label">
                   <property name="styleSheet">
@@ -367,6 +367,28 @@ QPushButton:hover {
                   <property name="text">
                    <string>Коллекция фильмов </string>
                   </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QScrollArea" name="scrollArea_2">
+                  <property name="widgetResizable">
+                   <bool>true</bool>
+                  </property>
+                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>1040</width>
+                     <height>450</height>
+                    </rect>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <layout class="QVBoxLayout" name="collection_cinema"/>
+                    </item>
+                   </layout>
+                  </widget>
                  </widget>
                 </item>
                </layout>
