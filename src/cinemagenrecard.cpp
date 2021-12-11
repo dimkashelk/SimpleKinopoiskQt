@@ -3,6 +3,7 @@
 #include "clickedqlabel.h"
 #include "cinemacard.h"
 #include <QSqlQuery>
+#include <QSqlError>
 
 CinemaGenreCard::CinemaGenreCard(QWidget *parent) :
     QFrame(parent),
@@ -17,7 +18,7 @@ CinemaGenreCard::~CinemaGenreCard()
 }
 
 
-CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString id_genre, QString name_genre) :
+CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre) :
     QFrame(parent),
     ui(new Ui::CinemaGenreCard)
 {
@@ -25,12 +26,15 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString id_ge
 
     this->db = db;
 
-    this->ui->label->setText(name_genre);
+    QSqlQuery get_id("SELECT id FROM genres WHERE genre = " + genre, db);
+    get_id.next();
 
-//    QSqlQuery cinema_query;
-//    cinema_query.prepare("SELECT image FROM cinema WHERE genre = (:genreId)");
-//    cinema_query.bindValue(":genreId", id_genre);
-//    cinema_query.exec();
+    this->ui->label->setText(genre);
+
+    QSqlQuery cinema_query;
+    cinema_query.prepare("SELECT image FROM cinema WHERE genre = (:genreId)");
+    cinema_query.bindValue(":genreId", get_id.value(0).toString());
+    cinema_query.exec();
 
 //    QList<QByteArray> cinemas;
 //    if (cinema_query.isActive()) {

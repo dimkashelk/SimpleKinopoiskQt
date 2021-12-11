@@ -107,7 +107,7 @@ void MainWindow::init_cinema()
 
     QList<CinemaGenreCard> layouts;
     for (auto i: five_genres) {
-        CinemaGenreCard *new_card = new CinemaGenreCard(db, this, "1", "1");
+        CinemaGenreCard *new_card = new CinemaGenreCard(db, this, i);
         this->ui->collection_cinema->addWidget(new_card);
     }
 }
