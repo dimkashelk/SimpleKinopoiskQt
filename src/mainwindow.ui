@@ -19,7 +19,7 @@ background-color: rgb(31, 31, 31);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">QWidget {
+    <string notr="true">QWidget#centralwidget {
 	border: 0;
 }</string>
    </property>
@@ -36,7 +36,6 @@ background-color: rgb(31, 31, 31);</string>
 	background-color: rgba(255, 255, 255, 0);
 	padding: 10px;
 	border-radius: 10px;
-	border: 0;
 }
 
 QTabBar::tab:selected, QTabBar::tab:hover {
@@ -49,7 +48,6 @@ QTabBar::tab {
 	padding: 15px;
 	padding-top: 0px;
 	margin: 10px; 
-	border: 0;
 }
 
 QTabWidget::pane {
@@ -78,9 +76,6 @@ QTabWidget::pane {
        <bool>true</bool>
       </property>
       <widget class="QWidget" name="main">
-       <property name="styleSheet">
-        <string notr="true">border: 0;</string>
-       </property>
        <attribute name="icon">
         <iconset>
          <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/main-page.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/main-page.png</iconset>
@@ -102,70 +97,8 @@ QTabWidget::pane {
             <string notr="true">QLabel {
 	color: rgb(255, 255, 255);
 	padding-left: 10px;
-	font: 30pt &quot;Segoe UI&quot;;
-}
-
-	QScrollBar:vertical
-    {
-        background-color: #2A2929;
-		width: 15px;
-        margin: 0px 0px 0px 0px;
-        border-radius: 5px;
-    }
-
-    QScrollBar::handle:vertical
-    {
-        background-color: grey;         /* #605F5F; */
-        min-height: 3px;
-        border-radius: 5px;
-    }
-
-    QScrollBar::sub-line:vertical
-    {
-        margin: 0px 0px 0px 0px;
-        border-image: none;
-        height: 0px;
-        width: 0px;
-        subcontrol-position: top;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::add-line:vertical
-    {
-        margin: 0px 0px 0px 0px;
-        height: 0px;
-        width: 0px;
-        subcontrol-position: bottom;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
-    {
-        height: 0px;
-        width: 0px;
-        subcontrol-position: top;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
-    {
-        height: 0px;
-        width: 0px;
-        subcontrol-position: bottom;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
-    {
-        background: none;
-		background-color: rgba(255, 255, 255, 0);
-    }
-
-    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
-    {
-        background: none;
-		background-color: rgba(255, 255, 255, 0);
-    }</string>
+	font: 18pt &quot;Segoe UI&quot;;
+}</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
@@ -179,9 +112,6 @@ QTabWidget::pane {
               </item>
               <item>
                <widget class="QScrollArea" name="scroll_area_popular">
-                <property name="styleSheet">
-                 <string notr="true">border: 0;</string>
-                </property>
                 <property name="lineWidth">
                  <number>1</number>
                 </property>
@@ -193,8 +123,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>488</width>
-                   <height>498</height>
+                   <width>479</width>
+                   <height>496</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -218,9 +148,6 @@ QTabWidget::pane {
               </item>
               <item>
                <widget class="QScrollArea" name="scroll_area_new">
-                <property name="styleSheet">
-                 <string notr="true">border: 0;</string>
-                </property>
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
@@ -229,8 +156,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>488</width>
-                   <height>498</height>
+                   <width>479</width>
+                   <height>496</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -289,71 +216,7 @@ QPushButton:hover {
             <string notr="true">QTextEdit {
 	color: rgb(255, 255, 255);
 	border: 0;
-}
-
-QScrollBar:vertical
-    {
-        background-color: #2A2929;
-        width: 15px;
-        margin: 15px 3px 15px 3px;
-        border: 1px transparent #2A2929;
-        border-radius: 4px;
-    }
-
-    QScrollBar::handle:vertical
-    {
-        background-color: grey;         /* #605F5F; */
-        min-height: 5px;
-        border-radius: 4px;
-    }
-
-    QScrollBar::sub-line:vertical
-    {
-        margin: 3px 0px 3px 0px;
-        border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
-        height: 10px;
-        width: 10px;
-        subcontrol-position: top;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::add-line:vertical
-    {
-        margin: 3px 0px 3px 0px;
-        border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
-        height: 10px;
-        width: 10px;
-        subcontrol-position: bottom;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
-    {
-        border-image: url(:/qss_icons/rc/up_arrow.png);
-        height: 10px;
-        width: 10px;
-        subcontrol-position: top;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
-    {
-        border-image: url(:/qss_icons/rc/down_arrow.png);
-        height: 10px;
-        width: 10px;
-        subcontrol-position: bottom;
-        subcontrol-origin: margin;
-    }
-
-    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
-    {
-        background: none;
-    }
-
-    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
-    {
-        background: none;
-    }</string>
+}</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
@@ -399,19 +262,16 @@ QPushButton:hover {
               </item>
               <item>
                <widget class="QScrollArea" name="scrollArea">
-                <property name="styleSheet">
-                 <string notr="true">border: 0;</string>
-                </property>
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="news_scroll_area">
+                <widget class="QWidget" name="new_scroll_are">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>984</width>
-                   <height>558</height>
+                   <width>969</width>
+                   <height>544</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">
@@ -419,9 +279,6 @@ QPushButton:hover {
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">border: 0;</string>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_7">
                   <item>
@@ -448,9 +305,6 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ebrima'; font-size:36pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI Light'; font-weight:24;&quot;&gt;wqewqeqweqweqwe&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
-                    <property name="textInteractionFlags">
-                     <set>Qt::NoTextInteraction</set>
-                    </property>
                    </widget>
                   </item>
                   <item>
@@ -469,16 +323,10 @@ p, li { white-space: pre-wrap; }
                      </font>
                     </property>
                     <property name="verticalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAsNeeded</enum>
+                     <enum>Qt::ScrollBarAlwaysOff</enum>
                     </property>
                     <property name="horizontalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAsNeeded</enum>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
-                    </property>
-                    <property name="textInteractionFlags">
-                     <set>Qt::NoTextInteraction</set>
+                     <enum>Qt::ScrollBarAlwaysOff</enum>
                     </property>
                    </widget>
                   </item>

@@ -25,16 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     db.setDatabaseName("db.db");
     db.open();
 
-    QSqlQuery test("SELECT image, title, description, text FROM news WHERE id = 5", db);
-    test.next();
-    QImage t;
-    t.loadFromData(test.value(0).toByteArray());
-    NewsCard *news_card = new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t);
-    this->ui->popular_scroll->addWidget(news_card);
-    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
-    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
-    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
-    this->ui->popular_scroll->addWidget(new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t));
+    init_popular();
+    
+    init_new_news();
 
     CinemaCard *cinema_test = new CinemaCard(this);
     this->ui->collection_cinema->addWidget(cinema_test);
@@ -62,6 +55,8 @@ void MainWindow::change_widget() {
 
 void MainWindow::set_info_news_show(NewsCard *card)
 {
+	card->increase_count_views();
+	
     this->ui->title->setText(card->get_title());
     this->ui->title->setAlignment(Qt::AlignHCenter);
     this->ui->image->setPixmap(QPixmap::fromImage(card->get_image().scaledToWidth(width() / 100 * 70), Qt::AutoColor));
@@ -77,7 +72,7 @@ void MainWindow::on_text_textChanged()
     QRect widgetRect = ui->text->rect();
     QRect textRect = m.boundingRect(QRect(0, 0, 0, 0), Qt::TextWordWrap,s);
     int x = 10;
-    ui->text->setMinimumHeight(this->ui->news_scroll_area->geometry().height() * 1.2);
+    ui->text->setMinimumHeight(textRect.height() + x);
 }
 
 
@@ -87,9 +82,8 @@ void MainWindow::on_title_textChanged()
     QFontMetrics m(ui->title->font());
     QRect widgetRect = ui->title->rect();
     QRect textRect = m.boundingRect(QRect(0,0,0,0), Qt::TextWordWrap, s);
-    int x = 100;
-    ui->title->setMinimumHeight(textRect.height() * 0.2);
-    ui->title->setMaximumHeight(textRect.height() * 1.5);
+    int x = 10;
+    ui->title->setMinimumHeight(textRect.height() + x);
 }
 
 
@@ -105,4 +99,42 @@ void MainWindow::on_forward_clicked()
         this->ui->stackedWidget->setCurrentIndex(1);
     }
 }
+
+
+void MainWindow::init_popular() 
+{	
+	QSqlQuery get_10_news("SELECT id, title, description, text, image, count_views FROM news ORDER BY count_views DESC LIMIT 10", db);
+	if (get_10_news.isActive()) {
+		while (get_10_news.next()) {
+			NewsCard *new_card = new NewsCard(this, get_10_news.value(0).toString(), get_10_news.value(1).toString(), get_10_news.value(2).toString(), get_10_news.value(3).toString(), QImage::fromByteArray(get_10_news.value(4).toByteArray(), get_10_news.value(5).toString());
+			this->ui->popular_scroll->addWidget(new_card);
+		}
+	}
+}
+
+
+void MainWindow::init_new_news() 
+{
+	QSqlQuery get_10_new_news("SELECT id, title, description, text, image, count_views FROM news LIMIT 10", db);
+	if (get_10_new_news.isActive()) {
+		while (get_10_new_news.next()) {
+			NewsCard *new_card = new NewsCard(this, get_10_new_news.value(0).toString(), get_10_new_news.value(1).toString(), get_10_new_news.value(2).toString(), get_10_new_news.value(3).toString(), QImage::fromByteArray(get_10_new_news.value(4).toByteArray(), get_10_new_news.value(5).toString());
+			this->ui->
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
