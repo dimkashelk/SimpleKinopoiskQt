@@ -20,6 +20,11 @@
 	background-color: rgb(50, 50, 50);
 }
 
+QHBoxLayout {
+	
+	background-color: rgba(255, 255, 255, 0);
+}
+
 QLabel {
 	font: 25 25pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
@@ -48,6 +53,10 @@ QTabBar::tab {
 	padding: 15px;
 	padding-top: 0px;
 	margin: 10px; 
+}
+
+QScrollArea {
+	background-color: rgba(255, 255, 255, 0);
 }
 
 QTabWidget::pane {
@@ -114,7 +123,8 @@ QScrollBar:horizontal
     {
         background: none;
 		background-color: rgba(255, 255, 255, 0);
-    }</string>
+    }
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
