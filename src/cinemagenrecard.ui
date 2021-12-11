@@ -20,8 +20,7 @@
 	background-color: rgb(50, 50, 50);
 }
 
-QHBoxLayout {
-	
+QHBoxLayout, QTabBar {
 	background-color: rgba(255, 255, 255, 0);
 }
 
@@ -33,7 +32,7 @@ QLabel {
 	background-color: rgba(255, 255, 255, 0);
 }
 
-QFrame:hover {
+QFrame:hover, QScrollArea:hover {
 	background-color: rgb(70, 70, 70);
 }
 
@@ -43,7 +42,7 @@ QTabBar {
 	border-radius: 10px;
 }
 
-QTabBar::tab:selected, QTabBar::tab:hover {
+QTabBar::tab:selected {
 	background-color: rgb(50, 50, 50);
 }
 
@@ -124,6 +123,10 @@ QScrollBar:horizontal
         background: none;
 		background-color: rgba(255, 255, 255, 0);
     }
+
+QScrollArea {
+	background-color: rgba(255, 255, 255, 0);
+}
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -137,30 +140,29 @@ QScrollBar:horizontal
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="cinema">
-       <item>
-        <widget class="QScrollArea" name="scrollArea">
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>435</width>
-            <height>197</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout"/>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>437</width>
+          <height>199</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </item>
     </layout>
    </item>
