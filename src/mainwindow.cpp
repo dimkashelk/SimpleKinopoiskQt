@@ -69,7 +69,7 @@ void MainWindow::on_text_textChanged()
     QRect widgetRect = ui->text->rect();
     QRect textRect = m.boundingRect(QRect(0, 0, 0, 0), Qt::TextWordWrap,s);
     int x = 10;
-    ui->text->setMinimumHeight(textRect.height() + x);
+    this->ui->text->setMinimumHeight(this->ui->news_scroll_area->geometry().height() * 1.2);
 }
 
 
@@ -79,8 +79,9 @@ void MainWindow::on_title_textChanged()
     QFontMetrics m(ui->title->font());
     QRect widgetRect = ui->title->rect();
     QRect textRect = m.boundingRect(QRect(0,0,0,0), Qt::TextWordWrap, s);
-    int x = 10;
-    ui->title->setMinimumHeight(textRect.height() + x);
+    int x = 100;
+    this->ui->title->setMinimumHeight(textRect.height() * 0.2);
+    this->ui->title->setMaximumHeight(textRect.height() * 1.5);
 }
 
 

@@ -169,7 +169,7 @@ QScrollArea {
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -230,7 +230,7 @@ QScrollArea {
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="scroll_area_widget_2">
+                <widget class="QWidget" name="new_scroll_area">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
@@ -344,7 +344,7 @@ QPushButton:hover {
                 <property name="widgetResizable">
                  <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="new_scroll_are">
+                <widget class="QWidget" name="news_scroll_area">
                  <property name="geometry">
                   <rect>
                    <x>0</x>
@@ -402,10 +402,10 @@ p, li { white-space: pre-wrap; }
                      </font>
                     </property>
                     <property name="verticalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAlwaysOff</enum>
+                     <enum>Qt::ScrollBarAsNeeded</enum>
                     </property>
                     <property name="horizontalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAlwaysOff</enum>
+                     <enum>Qt::ScrollBarAsNeeded</enum>
                     </property>
                    </widget>
                   </item>
