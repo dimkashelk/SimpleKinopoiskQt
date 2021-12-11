@@ -22,16 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     db.setDatabaseName("db.db");
     db.open();
 
-    QSqlQuery test("SELECT image, title, description, text FROM news WHERE id = 1", db);
-    test.next();
-    QImage t;
-    t.loadFromData(test.value(0).toByteArray());
-    NewsCard *news_card = new NewsCard(this, test.value(1).toString(), test.value(3).toString(), test.value(2).toString(), t);
-    this->ui->popular_scroll->addWidget(news_card);
-
     init_cinema();
-
-    connect(news_card, &NewsCard::clicked, this, &MainWindow::change_widget);
 }
 
 MainWindow::~MainWindow()
@@ -98,7 +89,7 @@ void MainWindow::on_forward_clicked()
 
 void MainWindow::init_cinema()
 {
-    QSqlQuery genres_query("SELECT name FROM genres", db);
+    QSqlQuery genres_query("SELECT genre FROM genres", db);
     QList<QString> genres;
     if (genres_query.isActive()) {
         while (genres_query.next()) {
@@ -111,24 +102,3 @@ void MainWindow::init_cinema()
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
