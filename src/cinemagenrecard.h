@@ -16,7 +16,7 @@ public:
 
     explicit CinemaGenreCard(QWidget *parent = nullptr);
 
-    CinemaGenreCard(QWidget *parent = nullptr, QString id_genre = "1", QString name_genre = "Фэнтези");
+    CinemaGenreCard(QSqlDatabase db, QWidget *parent = nullptr, QString id_genre = "1", QString name_genre = "Фэнтези");
 
     ~CinemaGenreCard();
 

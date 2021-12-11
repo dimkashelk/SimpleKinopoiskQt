@@ -17,48 +17,47 @@ CinemaGenreCard::~CinemaGenreCard()
 }
 
 
-CinemaGenreCard::CinemaGenreCard(QWidget *parent, QString id_genre, QString name_genre) :
+CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString id_genre, QString name_genre) :
     QFrame(parent),
     ui(new Ui::CinemaGenreCard)
 {
     ui->setupUi(this);
 
-    db = QSqlDatabase::addDatabase("QSQLITE", "db");
-    db.setDatabaseName("db.db");
-    db.open();
+    this->db = db;
 
-    QSqlQuery cinema_query;
-    cinema_query.prepare("SELECT image FROM cinema WHERE genre = (:genreId)");
-    cinema_query.bindValue(":genreId", id_genre);
-    cinema_query.exec();
+    this->ui->label->setText(name_genre);
 
-    QList<QByteArray> cinemas;
-    if (cinema_query.isActive()) {
-        while (cinema_query.next()) {
-            cinemas.append(cinema_query.value(0).toByteArray());
-        }
-    }
+//    QSqlQuery cinema_query;
+//    cinema_query.prepare("SELECT image FROM cinema WHERE genre = (:genreId)");
+//    cinema_query.bindValue(":genreId", id_genre);
+//    cinema_query.exec();
 
-    QSet<QByteArray> five_cinema;
-    while (five_cinema.size() < 5) {
-        five_cinema.insert(cinemas[rand() % cinemas.size()]);
-    }
+//    QList<QByteArray> cinemas;
+//    if (cinema_query.isActive()) {
+//        while (cinema_query.next()) {
+//            cinemas.append(cinema_query.value(0).toByteArray());
+//        }
+//    }
 
-    ClickableQLabel *label = new ClickableQLabel(name_genre, this);
-    this->ui->qMain->addWidget(label);
+//    QSet<QByteArray> five_cinema;
+//    while (five_cinema.size() < 5) {
+//        five_cinema.insert(cinemas[rand() % cinemas.size()]);
+//    }
 
-    QScrollArea *scrollArea = new QScrollArea(this);
-    QWidget *scrollAreaWidget = new QWidget(this);
-    QHBoxLayout *cinema = new QHBoxLayout(this);
+//    ClickableQLabel *label = new ClickableQLabel(name_genre, this);
+//    this->ui->qMain->addWidget(label);
 
-    for (auto i: five_cinema) {
-        QImage dop;
-        dop.loadFromData(i);
-        CinemaCard *card = new CinemaCard(this);
+//    QScrollArea *scrollArea = new QScrollArea(this);
+//    QWidget *scrollAreaWidget = new QWidget(this);
+//    QHBoxLayout *cinema = new QHBoxLayout(this);
 
-    }
+//    for (auto i: five_cinema) {
+//        QImage dop;
+//        dop.loadFromData(i);
+//        CinemaCard *card = new CinemaCard(this);
 
-    scrollAreaWidget->setLayout(cinema);
-    scrollArea->addScrollBarWidget(scrollAreaWidget, Qt::AlignCenter);
+//    }
 
+//    scrollAreaWidget->setLayout(cinema);
+//    scrollArea->addScrollBarWidget(scrollAreaWidget, Qt::AlignCenter);
 }
