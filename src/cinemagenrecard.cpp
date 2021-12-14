@@ -24,44 +24,49 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
 {
     ui->setupUi(this);
 
+    this->setMinimumHeight(400);
+
     this->db = db;
 
-    QSqlQuery get_id("SELECT id FROM genres WHERE genre = " + genre, db);
+    QSqlQuery get_id("SELECT id FROM genres WHERE genre = \"" + genre + "\"", db);
     get_id.next();
-
     this->ui->label->setText(genre);
 
-    QSqlQuery cinema_query;
-    cinema_query.prepare("SELECT image FROM cinema WHERE genre = (:genreId)");
-    cinema_query.bindValue(":genreId", get_id.value(0).toString());
-    cinema_query.exec();
+    QSqlQuery cinema_id_query("SELECT film FROM genre_film WHERE genre = " + get_id.value(0).toString(), db);
+    cinema_id_query.next();
 
-//    QList<QByteArray> cinemas;
-//    if (cinema_query.isActive()) {
-//        while (cinema_query.next()) {
-//            cinemas.append(cinema_query.value(0).toByteArray());
+    QList<QString> all_cinema;
+    if (cinema_id_query.isActive()) {
+        while (cinema_id_query.next()) {
+            all_cinema.append(cinema_id_query.value(0).toString());
+        }
+    }
+
+    QSet<QString> films;
+    while (films.size() < 5) {
+        films.insert(all_cinema[rand() % all_cinema.size()]);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + *films.begin(), db);
+        get_film.next();
+        if (get_film.isActive()) {
+            CinemaCard *new_card = new CinemaCard(this);
+            this->ui->layout->addWidget(new_card);
+        }
+    }
+
+    QLabel *label = new QLabel("TESTING");
+    label->setMaximumHeight(150);
+
+    this->ui->layout->addWidget(label);
+
+//    for (auto i: films) {
+//        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + i, db);
+//        get_film.next();
+//        if (get_film.isActive()) {
+//            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(1).toByteArray()), get_film.value(0).toString(), this);
+//            this->ui->layout->addWidget(new_card);
 //        }
 //    }
-
-//    QSet<QByteArray> five_cinema;
-//    while (five_cinema.size() < 5) {
-//        five_cinema.insert(cinemas[rand() % cinemas.size()]);
-//    }
-
-//    ClickableQLabel *label = new ClickableQLabel(name_genre, this);
-//    this->ui->qMain->addWidget(label);
-
-//    QScrollArea *scrollArea = new QScrollArea(this);
-//    QWidget *scrollAreaWidget = new QWidget(this);
-//    QHBoxLayout *cinema = new QHBoxLayout(this);
-
-//    for (auto i: five_cinema) {
-//        QImage dop;
-//        dop.loadFromData(i);
-//        CinemaCard *card = new CinemaCard(this);
-
-//    }
-
-//    scrollAreaWidget->setLayout(cinema);
-//    scrollArea->addScrollBarWidget(scrollAreaWidget, Qt::AlignCenter);
 }

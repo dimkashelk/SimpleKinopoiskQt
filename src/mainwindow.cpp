@@ -102,9 +102,6 @@ void MainWindow::init_cinema()
         five_genres.insert(genres[rand() % genres.size()]);
     }
 
-    QString form = "SELECT film_id FROM genre_films WHERE genre_id = (:genreId) LIMIT 10";
-    QSqlQuery get_films;
-
     QList<CinemaGenreCard> layouts;
     for (auto i: five_genres) {
         CinemaGenreCard *new_card = new CinemaGenreCard(db, this, i);
