@@ -19,11 +19,19 @@ public:
 
     ~CinemaCard();
 
+signals:
+
+    void clicked();
+
+protected:
+
+    void mousePressEvent(QMouseEvent *event);
+
 private:
 
     Ui::CinemaCard *ui;
 
-
+    void on_image_clicked();
 };
 
 #endif // CINEMACARD_H

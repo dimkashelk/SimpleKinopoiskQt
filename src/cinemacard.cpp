@@ -9,7 +9,7 @@ CinemaCard::CinemaCard(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setMaximumSize(355, 200);
+    this->setMaximumSize(140, 250);
 }
 
 CinemaCard::~CinemaCard()
@@ -22,19 +22,24 @@ CinemaCard::CinemaCard(QImage image, QString title, QWidget *parent) :
     QFrame(parent),
     ui(new Ui::CinemaCard)
 {
-    QFrame *frame = new QFrame();
+    this->setMaximumSize(140, 250);
 
-    frame->setMaximumSize(355, 200);
-
-    QVBoxLayout *main = new QVBoxLayout(this);
-    const QRect geo = QRect(0, 0, 355, 200);
-    main->setGeometry(geo);
+    image = image.scaled(140, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
     ClickableQLabel *image_label = new ClickableQLabel("", this);
     image_label->setPixmap(QPixmap::fromImage(image, Qt::AutoColor));
-    main->addWidget(image_label);
 
-    frame->setLayout(main);
+    this->ui->layout->addWidget(image_label);
 
-    this->ui->setupUi(frame);
+    connect(image_label, &ClickableQLabel::clicked, this, &CinemaCard::on_image_clicked);
+}
+
+
+void CinemaCard::on_image_clicked() {
+    emit clicked();
+}
+
+
+void CinemaCard::mousePressEvent(QMouseEvent *event) {
+    emit clicked();
 }
