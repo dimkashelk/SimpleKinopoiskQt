@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>335</width>
-    <height>200</height>
+    <width>140</width>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,15 +37,6 @@ QFrame:hover {
 	background-color: rgb(70, 70, 70);
 }</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
  </widget>
  <resources/>
  <connections/>
