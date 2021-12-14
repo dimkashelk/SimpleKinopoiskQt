@@ -24,7 +24,7 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
 {
     ui->setupUi(this);
 
-    this->setMinimumHeight(400);
+    this->setMinimumHeight(700);
 
     this->db = db;
 
@@ -47,26 +47,12 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
         films.insert(all_cinema[rand() % all_cinema.size()]);
     }
 
-    for (int i = 0; i < 5; i++) {
-        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + *films.begin(), db);
+    for (auto i: films) {
+        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + i, db);
         get_film.next();
         if (get_film.isActive()) {
-            CinemaCard *new_card = new CinemaCard(this);
+            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(1).toByteArray()), get_film.value(0).toString(), this);
             this->ui->layout->addWidget(new_card);
         }
     }
-
-    QLabel *label = new QLabel("TESTING");
-    label->setMaximumHeight(150);
-
-    this->ui->layout->addWidget(label);
-
-//    for (auto i: films) {
-//        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + i, db);
-//        get_film.next();
-//        if (get_film.isActive()) {
-//            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(1).toByteArray()), get_film.value(0).toString(), this);
-//            this->ui->layout->addWidget(new_card);
-//        }
-//    }
 }

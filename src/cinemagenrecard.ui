@@ -17,7 +17,7 @@
    <string notr="true">QFrame, QWidget {
 	border-radius: 25px;
     padding: 5px;
-	background-color: rgb(100, 100, 100);
+	background-color: rgb(50, 50, 50);
 }
 
 QHBoxLayout, QTabBar {
