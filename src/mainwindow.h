@@ -37,6 +37,10 @@ private:
 
     void change_cinema_widget();
 
+    void set_film_info(QString id_film);
+
+    // TODO: set_film_info_from_card
+
     void set_info_news_show(NewsCard *card);
 
     bool news_info = false;

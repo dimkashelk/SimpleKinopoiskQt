@@ -119,13 +119,10 @@ void MainWindow::change_cinema_widget() {
     if (card->get_id_film() == "-1") {
         QSet<QString> films;
         QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
-        qDebug() << get_all_films.isActive();
         while (get_all_films.next()) {
             films.insert(get_all_films.value(0).toString());
         }
-        qDebug() << card->get_id_genre();
         QSqlQuery get_name("SELECT genre FROM genres WHERE id = " + card->get_id_genre(), db);
-        qDebug() << get_name.isActive();
         get_name.next();
         this->ui->name_genre->setText(get_name.value(0).toString());
         int count = 0;
@@ -139,52 +136,58 @@ void MainWindow::change_cinema_widget() {
         }
         this->ui->cinema_stacked->setCurrentIndex(1);
     } else {
-        QSqlQuery get_film("SELECT title, " // 0 название
-                           "description, "  // 1 описание
-                           "image, "        // 2 постер
-                           "year, "         // 3 год производства
-                           "slogan, "       // 4 слоган
-                           "country, "      // 5 страна производства
-                           "director, "     // 6 режиссер
-                           "screenwriter, " // 7 сценарий
-                           "producer, "     // 8 продюсер
-                           "operator, "     // 9 оператор
-                           "composer, "     // 10 композитор
-                           "artist, "       // 11 художник
-                           "mounting, "     // 12 монтаж
-                           "money_usa, "    // 13 сбора в США
-                           "money_world, "  // 14 сборы в мире
-                           "money_ru, "     // 15 сборы в России
-                           "premier_ru, "   // 16 премьера в России
-                           "premier_world, "// 17 премьера в мире
-                           "age, "          // 18 возрастное ограничение минкульт
-                           "mpaa, "         // 19 рейтинг MPAA
-                           "time "          // 20 продолжительность
-                           "FROM films WHERE id = " + card->get_id_film(), db);
-        get_film.next();
-        this->ui->film_name->setText(get_film.value(0).toString());
-        this->ui->film_poster->setPixmap(QPixmap::fromImage(QImage::fromData(get_film.value(2).toByteArray())));
-        this->ui->film_description->setText(get_film.value(1).toString());
-
-        this->ui->film_form->addRow(new QLabel("Год производства"), new QLabel(get_film.value(3).toString()));
-        this->ui->film_form->addRow(new QLabel("Слоган"), new QLabel(get_film.value(4).toString()));
-        this->ui->film_form->addRow(new QLabel("Страна"), new QLabel(get_film.value(5).toString()));
-        this->ui->film_form->addRow(new QLabel("Режиссёр"), new QLabel(get_film.value(6).toString()));
-        this->ui->film_form->addRow(new QLabel("Сценарий"), new QLabel(get_film.value(7).toString()));
-        this->ui->film_form->addRow(new QLabel("Продюсер"), new QLabel(get_film.value(8).toString()));
-        this->ui->film_form->addRow(new QLabel("Оператор"), new QLabel(get_film.value(9).toString()));
-        this->ui->film_form->addRow(new QLabel("Композитор"), new QLabel(get_film.value(10).toString()));
-        this->ui->film_form->addRow(new QLabel("Художник"), new QLabel(get_film.value(11).toString()));
-        this->ui->film_form->addRow(new QLabel("Монтаж"), new QLabel(get_film.value(12).toString()));
-        this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(13).toString()));
-        this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(14).toString()));
-        this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(15).toString()));
-        this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(16).toString()));
-        this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(17).toString()));
-        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
-        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
-        this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
+        set_film_info(card->get_id_film());
 
         this->ui->tabWidget->setCurrentIndex(2);
     }
+}
+
+
+void MainWindow::set_film_info(QString id_film)
+{
+    QSqlQuery get_film("SELECT title, " // 0 название
+                       "description, "  // 1 описание
+                       "image, "        // 2 постер
+                       "year, "         // 3 год производства
+                       "slogan, "       // 4 слоган
+                       "country, "      // 5 страна производства
+                       "director, "     // 6 режиссер
+                       "screenwriter, " // 7 сценарий
+                       "producer, "     // 8 продюсер
+                       "operator, "     // 9 оператор
+                       "composer, "     // 10 композитор
+                       "artist, "       // 11 художник
+                       "mounting, "     // 12 монтаж
+                       "money_usa, "    // 13 сбора в США
+                       "money_world, "  // 14 сборы в мире
+                       "money_ru, "     // 15 сборы в России
+                       "premier_ru, "   // 16 премьера в России
+                       "premier_world, "// 17 премьера в мире
+                       "age, "          // 18 возрастное ограничение минкульт
+                       "mpaa, "         // 19 рейтинг MPAA
+                       "time "          // 20 продолжительность
+                       "FROM films WHERE id = " + id_film, db);
+    get_film.next();
+    this->ui->film_name->setText(get_film.value(0).toString());
+    this->ui->film_poster->setPixmap(QPixmap::fromImage(QImage::fromData(get_film.value(2).toByteArray())));
+    this->ui->film_description->setText(get_film.value(1).toString());
+
+    this->ui->film_form->addRow(new QLabel("Год производства"), new QLabel(get_film.value(3).toString()));
+    this->ui->film_form->addRow(new QLabel("Слоган"), new QLabel(get_film.value(4).toString()));
+    this->ui->film_form->addRow(new QLabel("Страна"), new QLabel(get_film.value(5).toString()));
+    this->ui->film_form->addRow(new QLabel("Режиссёр"), new QLabel(get_film.value(6).toString()));
+    this->ui->film_form->addRow(new QLabel("Сценарий"), new QLabel(get_film.value(7).toString()));
+    this->ui->film_form->addRow(new QLabel("Продюсер"), new QLabel(get_film.value(8).toString()));
+    this->ui->film_form->addRow(new QLabel("Оператор"), new QLabel(get_film.value(9).toString()));
+    this->ui->film_form->addRow(new QLabel("Композитор"), new QLabel(get_film.value(10).toString()));
+    this->ui->film_form->addRow(new QLabel("Художник"), new QLabel(get_film.value(11).toString()));
+    this->ui->film_form->addRow(new QLabel("Монтаж"), new QLabel(get_film.value(12).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(13).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(14).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(15).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(16).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(17).toString()));
+    this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
+    this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
+    this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
 }
