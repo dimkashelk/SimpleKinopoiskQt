@@ -131,8 +131,9 @@ void MainWindow::change_cinema_widget() {
         int count = 0;
         for (auto i: films) {
             QSqlQuery get_film("SELECT image, title FROM films WHERE id = " + i, db);
+            qDebug() << get_film.lastError();
             get_film.next();
-            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_all_films.value(0).toString(), this);
+            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_film.value(1).toString(), this);
             this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
             count++;
         }
