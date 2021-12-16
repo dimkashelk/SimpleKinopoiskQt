@@ -35,6 +35,8 @@ private:
 
     void change_widget();
 
+    void change_cinema_widget();
+
     void set_info_news_show(NewsCard *card);
 
     bool news_info = false;

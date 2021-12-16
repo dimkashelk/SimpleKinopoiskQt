@@ -102,9 +102,32 @@ void MainWindow::init_cinema()
         five_genres.insert(genres[rand() % genres.size()]);
     }
 
-    QList<CinemaGenreCard> layouts;
     for (auto i: five_genres) {
         CinemaGenreCard *new_card = new CinemaGenreCard(db, this, i);
         this->ui->collection_cinema->addWidget(new_card);
+        connect(new_card, &CinemaGenreCard::clicked, this, &MainWindow::change_cinema_widget);
+    }
+}
+
+
+void MainWindow::change_cinema_widget() {
+    qDebug() << "ILOVE!";
+    CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
+    if (card->get_id_film() == "-1") {
+        QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
+        QSqlQuery get_name("SELECT genre FROM genres WHERE id = " + card->get_id_genre(), db);
+        get_name.next();
+        this->ui->name_genre->setText(get_name.value(0).toString());
+        if (get_all_films.isActive()) {
+            int count = 0;
+            while (get_all_films.next()) {
+                QSqlQuery get_film("SELECT image, title FROM films WHERE id = " + get_all_films.value(0).toString(), db);
+                get_film.next();
+                CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_all_films.value(0).toString(), this);
+                this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
+                count++;
+            }
+        }
+        this->ui->cinema_stacked->setCurrentIndex(1);
     }
 }
