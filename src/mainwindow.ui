@@ -17,6 +17,9 @@
    <string notr="true">
 background-color: rgb(31, 31, 31);</string>
   </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">QWidget#centralwidget {
@@ -123,8 +126,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>486</width>
-                   <height>506</height>
+                   <width>20</width>
+                   <height>20</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -156,8 +159,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>486</width>
-                   <height>506</height>
+                   <width>20</width>
+                   <height>20</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -369,11 +372,19 @@ QLabel {
 	font: 30pt Segoe UI;
 }
 
+QTextEdit {
+	color: rgb(255, 255, 255);
+	border: 0;
+}
+
+QScrollArea {
+	border: 0;
+}
+
 QScrollBar:vertical
 {
 	background-color: #2A2929;
 	width: 15px;
-	margin: 0px 0px 0px 0px;
 	border-radius: 5px;
 }
 
@@ -431,14 +442,59 @@ QScrollBar::add-line:vertical
 		background-color: rgba(255, 255, 255, 0);
     }
 
-QTextEdit {
-	color: rgb(255, 255, 255);
-	border: 0;
+QScrollBar:horizontal 
+{
+	border-radius: 5px;
+	height: 20px;
 }
 
-QScrollArea {
-	border: 0;
-}</string>
+QScrollBar::handle:horizontal
+{
+	background-color: white;         /* #605F5F; */
+    border-radius: 15px;
+	height: 20px;
+}
+
+QScrollBar::sub-page:horizontal, QScrollBar::add-page:horizontal
+{
+	background: none;
+	background-color: #2A2929;
+}
+
+QScrollBar::sub-line:horizontal
+{
+	margin: 0px 0px 0px 0px;
+	border-image: none;
+	height: 0px;
+	width: 0px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal
+{
+	margin: 0px 0px 0px 0px;
+    height: 0px;
+    width: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+    QScrollBar::sub-line:horizontal:hover,QScrollBar::sub-line:horizontal:on
+    {
+        height: 0px;
+        width: 0px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal:hover, QScrollBar::add-line:horizontal:on
+    {
+        height: 0px;
+        width: 0px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }</string>
        </property>
        <attribute name="icon">
         <iconset>
