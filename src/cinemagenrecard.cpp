@@ -48,11 +48,22 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
     }
 
     for (auto i: films) {
-        QSqlQuery get_film("SELECT title, image FROM films WHERE id = " + i, db);
+        QSqlQuery get_film("SELECT image FROM films WHERE id = " + i, db);
         get_film.next();
         if (get_film.isActive()) {
-            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(1).toByteArray()), get_film.value(0).toString(), this);
+            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), i, this);
             this->ui->layout->addWidget(new_card);
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
