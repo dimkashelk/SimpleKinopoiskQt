@@ -32,7 +32,10 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
     QSqlQuery get_id("SELECT id FROM genres WHERE genre = \"" + genre + "\"", db);
     get_id.next();
 
+    this->id_genre = get_id.value(0).toString();
+
     ClickableQLabel *label = new ClickableQLabel(genre);
+    label->setCursor(Qt::PointingHandCursor);
     this->ui->main->addWidget(label);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
@@ -58,6 +61,7 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
         if (get_film.isActive()) {
             CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), i, this);
             layout->addWidget(new_card);
+            connect(new_card, &CinemaCard::clicked, this, &CinemaGenreCard::clicked_on_card);
         }
     }
 
@@ -66,19 +70,22 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
     p->setLayout(layout);
 
     QScrollArea *scroll_area = new QScrollArea(this);
+    scroll_area->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
     scroll_area->setMaximumHeight(500);
     scroll_area->setWidget(p);
 
     this->ui->main->addWidget(scroll_area);
+
+    connect(label, &ClickableQLabel::clicked, this, &CinemaGenreCard::clicked_on_label);
 }
 
 
+void CinemaGenreCard::clicked_on_card() {
+    CinemaCard card = qobject_cast<CinemaCard>(sender());
+    this->
+    emit clicked();
+}
 
-
-
-
-
-
-
-
-
+void CinemaGenreCard::clicked_on_label() {
+    emit clicked();
+}

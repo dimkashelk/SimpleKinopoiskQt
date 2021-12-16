@@ -20,10 +20,21 @@ public:
 
     ~CinemaGenreCard();
 
+signals:
+
+    void clicked();
+
 private:
     Ui::CinemaGenreCard *ui;
 
     QSqlDatabase db;
+
+    QString id_genre = "-1";
+    QString id_film = "-1";
+
+    void clicked_on_label();
+
+    void clicked_on_card();
 };
 
 #endif // CINEMAGENRECARD_H
