@@ -21,6 +21,4 @@ CinemaCard::CinemaCard(QImage image, QString title, QWidget *parent) :
     ui->setupUi(this);
 
     this->ui->label->setPixmap(QPixmap::fromImage(image));
-
-    this->ui->title->setText(title);
 }
