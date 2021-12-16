@@ -82,7 +82,7 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
 
 void CinemaGenreCard::clicked_on_card() {
     CinemaCard card = qobject_cast<CinemaCard>(sender());
-    this->
+    this->id_film = card.get_id_film();
     emit clicked();
 }
 
