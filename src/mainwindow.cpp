@@ -127,37 +127,30 @@ void MainWindow::change_film_widget()
 void MainWindow::change_cinema_widget() {
     CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
     qDebug() << card->get_id_film();
-    if (card->get_id_film() == "-1") {
-        QSet<QString> films;
-        QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
-        while (get_all_films.next()) {
-            films.insert(get_all_films.value(0).toString());
-        }
-        QSqlQuery get_name("SELECT genre FROM genres WHERE id = " + card->get_id_genre(), db);
-        get_name.next();
-        this->ui->name_genre->setText(get_name.value(0).toString());
-        int count = 0;
-        for (auto i: films) {
-            QSqlQuery get_film("SELECT image, title FROM films WHERE id = " + i, db);
-            qDebug() << get_film.lastError();
-            get_film.next();
-            CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_film.value(1).toString(), this);
-            this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
-            connect(new_card, &CinemaCard::clicked, this, &MainWindow::clicked_on_card_film);
-            count++;
-        }
-        this->ui->cinema_stacked->setCurrentIndex(1);
-    } else {
-        set_film_info(card->get_id_film());
-
-        this->ui->tabWidget->setCurrentIndex(2);
+    QSet<QString> films;
+    QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
+    while (get_all_films.next()) {
+        films.insert(get_all_films.value(0).toString());
     }
+    QSqlQuery get_name("SELECT genre FROM genres WHERE id = " + card->get_id_genre(), db);
+    get_name.next();
+    this->ui->name_genre->setText(get_name.value(0).toString());
+    int count = 0;
+    for (auto i: films) {
+        QSqlQuery get_film("SELECT image, title FROM films WHERE id = " + i, db);
+        qDebug() << get_film.lastError();
+        get_film.next();
+        CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_film.value(1).toString(), this);
+        this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
+        connect(new_card, &CinemaCard::clicked, this, &MainWindow::clicked_on_card_film);
+        count++;
+    }
+    this->ui->cinema_stacked->setCurrentIndex(1);
 }
 
 
 void MainWindow::set_film_info(QString id_film)
 {
-
     QSqlQuery get_film("SELECT title, " // 0 название
                        "description, "  // 1 описание
                        "image, "        // 2 постер
