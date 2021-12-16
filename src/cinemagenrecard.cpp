@@ -80,14 +80,16 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
 }
 
 
-void CinemaGenreCard::clicked_on_card() {
-    CinemaCard card = qobject_cast<CinemaCard>(sender());
-    this->id_film = card.get_id_film();
+void CinemaGenreCard::clicked_on_card()
+{
+    CinemaCard *card = dynamic_cast<CinemaCard*>(sender());
+    this->id_film = card->get_id_film();
     emit clicked();
 }
 
 
-void CinemaGenreCard::clicked_on_label() {
+void CinemaGenreCard::clicked_on_label()
+{
     emit clicked();
 }
 
@@ -101,4 +103,10 @@ QString CinemaGenreCard::get_id_film()
 QString CinemaGenreCard::get_id_genre()
 {
     return this->id_genre;
+}
+
+
+void CinemaGenreCard::mousePressEvent(QMouseEvent *mouse)
+{
+    emit clicked();
 }

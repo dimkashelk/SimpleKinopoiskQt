@@ -24,6 +24,10 @@ public:
 
     QString get_id_film();
 
+protected:
+
+    void mousePressEvent(QMouseEvent *mouse);
+
 signals:
 
     void clicked();
