@@ -86,6 +86,19 @@ void CinemaGenreCard::clicked_on_card() {
     emit clicked();
 }
 
+
 void CinemaGenreCard::clicked_on_label() {
     emit clicked();
+}
+
+
+QString CinemaGenreCard::get_id_film()
+{
+    return this->id_film;
+}
+
+
+QString CinemaGenreCard::get_id_genre()
+{
+    return this->id_genre;
 }

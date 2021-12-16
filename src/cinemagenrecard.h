@@ -20,6 +20,10 @@ public:
 
     ~CinemaGenreCard();
 
+    QString get_id_genre();
+
+    QString get_id_film();
+
 signals:
 
     void clicked();
