@@ -20,6 +20,12 @@ public:
 
     void paintEvent(QPaintEvent *event);
 
+    void mousePressEvent(QMouseEvent *mouseEvent);
+
+signals:
+
+    void clicked();
+
 private:
     Ui::CinemaCard *ui;
 

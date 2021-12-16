@@ -34,3 +34,9 @@ void CinemaCard::paintEvent(QPaintEvent *event)
     QPainter p(this);
     p.drawPixmap(0, 0, width(), height(), background);
 }
+
+
+void CinemaCard::mousePressEvent(QMouseEvent *mouseEvent)
+{
+    emit clicked();
+}
