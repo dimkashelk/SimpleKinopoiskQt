@@ -4,6 +4,7 @@
 #include "cinemacard.h"
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QScrollArea>
 
 CinemaGenreCard::CinemaGenreCard(QWidget *parent) :
     QFrame(parent),
@@ -24,13 +25,17 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
 {
     ui->setupUi(this);
 
-    this->setMinimumHeight(700);
+    this->setMinimumHeight(600);
 
     this->db = db;
 
     QSqlQuery get_id("SELECT id FROM genres WHERE genre = \"" + genre + "\"", db);
     get_id.next();
-    this->ui->label->setText(genre);
+
+    ClickableQLabel *label = new ClickableQLabel(genre);
+    this->ui->main->addWidget(label);
+
+    QHBoxLayout *layout = new QHBoxLayout(this);
 
     QSqlQuery cinema_id_query("SELECT film FROM genre_film WHERE genre = " + get_id.value(0).toString(), db);
     cinema_id_query.next();
@@ -52,9 +57,19 @@ CinemaGenreCard::CinemaGenreCard(QSqlDatabase db, QWidget *parent, QString genre
         get_film.next();
         if (get_film.isActive()) {
             CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), i, this);
-            this->ui->layout->addWidget(new_card);
+            layout->addWidget(new_card);
         }
     }
+
+    QWidget *p = new QWidget(this);
+    p->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
+    p->setLayout(layout);
+
+    QScrollArea *scroll_area = new QScrollArea(this);
+    scroll_area->setMaximumHeight(500);
+    scroll_area->setWidget(p);
+
+    this->ui->main->addWidget(scroll_area);
 }
 
 

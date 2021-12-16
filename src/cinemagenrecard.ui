@@ -20,7 +20,7 @@
 	background-color: rgb(50, 50, 50);
 }
 
-QHBoxLayout, QTabBar {
+QHBoxLayout, QTabBar, QScrollArea {
 	background-color: rgba(255, 255, 255, 0);
 }
 
@@ -32,7 +32,7 @@ QLabel {
 	background-color: rgba(255, 255, 255, 0);
 }
 
-QFrame:hover, QScrollArea:hover {
+QFrame:hover {
 	background-color: rgb(70, 70, 70);
 }
 
@@ -40,43 +40,7 @@ QFrame:hover, QScrollArea:hover {
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="main">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>437</width>
-          <height>199</height>
-         </rect>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <layout class="QHBoxLayout" name="layout"/>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QVBoxLayout" name="main"/>
    </item>
   </layout>
  </widget>
