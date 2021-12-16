@@ -101,12 +101,8 @@ void MainWindow::init_cinema()
             genres.append(genres_query.value(0).toString());
         }
     }
-    QSet<QString> five_genres;
-    while (five_genres.size() < 5) {
-        five_genres.insert(genres[rand() % genres.size()]);
-    }
 
-    for (auto i: five_genres) {
+    for (auto i: genres) {
         CinemaGenreCard *new_card = new CinemaGenreCard(db, this, i);
         this->ui->collection_cinema->addWidget(new_card);
         connect(new_card, &CinemaGenreCard::clicked, this, &MainWindow::change_cinema_widget);
@@ -118,6 +114,7 @@ void MainWindow::init_cinema()
 void MainWindow::change_film_widget()
 {
     CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
+    qDebug() << card->get_last_film()->get_id_film();
     set_film_info(card->get_last_film()->get_id_film());
 
     this->ui->tabWidget->setCurrentIndex(2);
@@ -137,10 +134,9 @@ void MainWindow::change_cinema_widget() {
     this->ui->name_genre->setText(get_name.value(0).toString());
     int count = 0;
     for (auto i: films) {
-        QSqlQuery get_film("SELECT image, title FROM films WHERE id = " + i, db);
-        qDebug() << get_film.lastError();
+        QSqlQuery get_film("SELECT image FROM films WHERE id = " + i, db);
         get_film.next();
-        CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_film.value(1).toString(), this);
+        CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), i, this);
         this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
         connect(new_card, &CinemaCard::clicked, this, &MainWindow::clicked_on_card_film);
         count++;
@@ -202,8 +198,7 @@ void MainWindow::set_film_info(QString id_film)
 void MainWindow::clicked_on_card_film()
 {
     CinemaCard *card = dynamic_cast<CinemaCard*>(sender());
-    qDebug() << card->get_id_film();
     set_film_info(card->get_id_film());
 
-    this->ui->stackedWidget->setCurrentIndex(2);
+    this->ui->tabWidget->setCurrentIndex(2);
 }

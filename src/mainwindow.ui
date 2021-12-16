@@ -824,6 +824,9 @@ QTextEdit {
                         <height>150</height>
                        </size>
                       </property>
+                      <property name="textInteractionFlags">
+                       <set>Qt::NoTextInteraction</set>
+                      </property>
                      </widget>
                     </item>
                     <item>
