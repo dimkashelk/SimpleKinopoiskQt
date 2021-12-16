@@ -25,6 +25,8 @@ public:
 
     QString get_id_film();
 
+    CinemaCard* get_last_film();
+
 protected:
 
     void mousePressEvent(QMouseEvent *mouse);

@@ -110,3 +110,9 @@ void CinemaGenreCard::mousePressEvent(QMouseEvent *mouse)
 {
     emit clicked();
 }
+
+
+CinemaCard* CinemaGenreCard::get_last_film()
+{
+    return this->last_film;
+}

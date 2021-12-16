@@ -37,9 +37,11 @@ private:
 
     void change_cinema_widget();
 
+    void change_film_widget();
+
     void set_film_info(QString id_film);
 
-    // TODO: set_film_info_from_card
+    void clicked_on_card_film();
 
     void set_info_news_show(NewsCard *card);
 

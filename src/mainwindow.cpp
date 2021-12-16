@@ -110,12 +110,23 @@ void MainWindow::init_cinema()
         CinemaGenreCard *new_card = new CinemaGenreCard(db, this, i);
         this->ui->collection_cinema->addWidget(new_card);
         connect(new_card, &CinemaGenreCard::clicked, this, &MainWindow::change_cinema_widget);
+        connect(new_card, &CinemaGenreCard::clicked_on_film, this, &MainWindow::change_film_widget);
     }
+}
+
+
+void MainWindow::change_film_widget()
+{
+    CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
+    set_film_info(card->get_last_film()->get_id_film());
+
+    this->ui->tabWidget->setCurrentIndex(2);
 }
 
 
 void MainWindow::change_cinema_widget() {
     CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
+    qDebug() << card->get_id_film();
     if (card->get_id_film() == "-1") {
         QSet<QString> films;
         QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
@@ -132,6 +143,7 @@ void MainWindow::change_cinema_widget() {
             get_film.next();
             CinemaCard *new_card = new CinemaCard(QImage::fromData(get_film.value(0).toByteArray()), get_film.value(1).toString(), this);
             this->ui->genre_layout->addWidget(new_card, count / 3, count % 3, Qt::AlignCenter);
+            connect(new_card, &CinemaCard::clicked, this, &MainWindow::clicked_on_card_film);
             count++;
         }
         this->ui->cinema_stacked->setCurrentIndex(1);
@@ -145,6 +157,7 @@ void MainWindow::change_cinema_widget() {
 
 void MainWindow::set_film_info(QString id_film)
 {
+
     QSqlQuery get_film("SELECT title, " // 0 название
                        "description, "  // 1 описание
                        "image, "        // 2 постер
@@ -190,4 +203,14 @@ void MainWindow::set_film_info(QString id_film)
     this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
     this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
     this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
+}
+
+
+void MainWindow::clicked_on_card_film()
+{
+    CinemaCard *card = dynamic_cast<CinemaCard*>(sender());
+    qDebug() << card->get_id_film();
+    set_film_info(card->get_id_film());
+
+    this->ui->stackedWidget->setCurrentIndex(2);
 }
