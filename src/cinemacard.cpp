@@ -15,7 +15,7 @@ CinemaCard::~CinemaCard()
 }
 
 
-CinemaCard::CinemaCard(QImage image, QString title, QWidget *parent) :
+CinemaCard::CinemaCard(QImage image, QString id, QWidget *parent) :
     QFrame(parent),
     ui(new Ui::CinemaCard)
 {
@@ -27,6 +27,8 @@ CinemaCard::CinemaCard(QImage image, QString title, QWidget *parent) :
     ui->setupUi(this);
 
     background = QPixmap::fromImage(image);
+
+    this->id_film = id;
 }
 
 void CinemaCard::paintEvent(QPaintEvent *event)
@@ -39,4 +41,10 @@ void CinemaCard::paintEvent(QPaintEvent *event)
 void CinemaCard::mousePressEvent(QMouseEvent *mouseEvent)
 {
     emit clicked();
+}
+
+
+QString CinemaCard::get_id_film()
+{
+    return this->id_film;
 }

@@ -22,6 +22,8 @@ public:
 
     void mousePressEvent(QMouseEvent *mouseEvent);
 
+    QString get_id_film();
+
 signals:
 
     void clicked();
@@ -30,6 +32,8 @@ private:
     Ui::CinemaCard *ui;
 
     QPixmap background;
+
+    QString id_film;
 };
 
 #endif // CINEMACARD_H
