@@ -18,8 +18,12 @@ public:
 
     ~CinemaCard();
 
+    void paintEvent(QPaintEvent *event);
+
 private:
     Ui::CinemaCard *ui;
+
+    QPixmap background;
 };
 
 #endif // CINEMACARD_H
