@@ -1,6 +1,7 @@
 #ifndef CINEMAGENRECARD_H
 #define CINEMAGENRECARD_H
 
+#include "cinemacard.h"
 #include <QFrame>
 #include <QSqlDatabase>
 
@@ -32,6 +33,8 @@ signals:
 
     void clicked();
 
+    void clicked_on_film();
+
 private:
     Ui::CinemaGenreCard *ui;
 
@@ -39,6 +42,7 @@ private:
 
     QString id_genre = "-1";
     QString id_film = "-1";
+    CinemaCard *last_film;
 
     void clicked_on_label();
 
