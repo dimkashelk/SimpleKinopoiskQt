@@ -34,6 +34,7 @@ private:
     Ui::MainWindow *ui;
 
     QSqlDatabase db;
+    QString id_news;
     QTextEdit *news_title = new QTextEdit(this), *news_text = new QTextEdit(this);
     QLabel *news_image_label = new QLabel(this);
 

@@ -4,6 +4,7 @@
 #include "clickedqlabel.h"
 #include "clickableqtextedit.h"
 #include <QFrame>
+#include <QSqlDatabase>
 
 namespace Ui {
 class NewsCard;
@@ -20,7 +21,7 @@ public:
     
     NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image);
     
-    NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views);
+    NewsCard(QSqlDatabase db, QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views);
 
     ~NewsCard();
 
@@ -51,6 +52,7 @@ private:
     QString text, id_news;
     ClickableQLabel *news_image, *news_label;
     ClickableQTextEdit *news_description;
+    QSqlDatabase db;
 	
 	int count_views;
 

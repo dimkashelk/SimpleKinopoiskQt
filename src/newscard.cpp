@@ -3,6 +3,9 @@
 #include "clickedqlabel.h"
 #include "clickableqtextedit.h"
 #include <QHBoxLayout>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlDatabase>
 
 NewsCard::NewsCard(QWidget *parent) :
     QFrame(parent),
@@ -93,13 +96,14 @@ NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString descripti
 	this->id_news = id;
 }
 
-NewsCard::NewsCard(QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views) :
+NewsCard::NewsCard(QSqlDatabase db, QWidget *parent, QString id, QString title, QString description, QString text, QImage image, QString count_views) :
     QFrame(parent),
     ui(new Ui::NewsCard)
 {
     ui->setupUi(this);
     original_image = new QImage(image);
     this->text = description;
+    this->db = db;
 
     image = image.scaledToWidth(250);
 
@@ -174,4 +178,6 @@ void NewsCard::set_count_views(int count) {
 
 void NewsCard::increase_count_views() {
 	this->count_views++;
+
+    QSqlQuery update("UPDATE news SET count_views = " + QString::number(count_views) + " WHERE id = " + id_news, db);
 }
