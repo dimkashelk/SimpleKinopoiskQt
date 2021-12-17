@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
+    <width>1691</width>
     <height>614</height>
    </rect>
   </property>
@@ -352,7 +352,7 @@ QPushButton:hover {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>984</width>
+                   <width>1475</width>
                    <height>558</height>
                   </rect>
                  </property>
@@ -632,7 +632,7 @@ QScrollBar::add-line:horizontal
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>982</width>
+                     <width>1347</width>
                      <height>464</height>
                     </rect>
                    </property>
@@ -935,7 +935,7 @@ QScrollBar::add-line:horizontal
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>757</width>
+                   <width>1122</width>
                    <height>495</height>
                   </rect>
                  </property>
