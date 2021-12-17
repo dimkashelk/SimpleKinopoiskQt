@@ -26,6 +26,10 @@ private slots:
 
     void on_forward_clicked();
 
+    void on_to_genre_card_clicked();
+
+    void on_to_collection_clicked();
+
 private:
     Ui::MainWindow *ui;
 

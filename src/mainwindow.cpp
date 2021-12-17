@@ -110,6 +110,7 @@ void MainWindow::init_cinema()
     }
 
     this->ui->tabWidget->setTabEnabled(2, false);
+    this->ui->to_genre_card->setEnabled(false);
 
     this->ui->to_collection->setMinimumHeight(this->height());
     this->ui->to_genre_card->setMinimumHeight(this->height());
@@ -145,6 +146,8 @@ void MainWindow::change_cinema_widget() {
         count++;
     }
     this->ui->cinema_stacked->setCurrentIndex(1);
+
+    this->ui->to_genre_card->setEnabled(true);
 }
 
 
@@ -231,3 +234,15 @@ void MainWindow::clicked_on_card_film()
 
     this->ui->tabWidget->setCurrentIndex(2);
 }
+
+void MainWindow::on_to_genre_card_clicked()
+{
+    this->ui->cinema_stacked->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_to_collection_clicked()
+{
+    this->ui->cinema_stacked->setCurrentIndex(0);
+}
+
