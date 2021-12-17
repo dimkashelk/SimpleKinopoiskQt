@@ -114,7 +114,6 @@ void MainWindow::init_cinema()
 void MainWindow::change_film_widget()
 {
     CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
-    qDebug() << card->get_last_film()->get_id_film();
     set_film_info(card->get_last_film()->get_id_film());
 
     this->ui->tabWidget->setCurrentIndex(2);
@@ -123,7 +122,6 @@ void MainWindow::change_film_widget()
 
 void MainWindow::change_cinema_widget() {
     CinemaGenreCard *card = dynamic_cast<CinemaGenreCard*>(sender());
-    qDebug() << card->get_id_film();
     QSet<QString> films;
     QSqlQuery get_all_films("SELECT film FROM genre_film WHERE genre = " + card->get_id_genre(), db);
     while (get_all_films.next()) {
@@ -147,6 +145,14 @@ void MainWindow::change_cinema_widget() {
 
 void MainWindow::set_film_info(QString id_film)
 {
+    QLayoutItem *item;
+    while((item = this->ui->film_form->takeAt(0))) {
+        if (item->widget()) {
+            delete item->widget();
+        }
+        delete item;
+    }
+
     QSqlQuery get_film("SELECT title, " // 0 название
                        "description, "  // 1 описание
                        "image, "        // 2 постер
