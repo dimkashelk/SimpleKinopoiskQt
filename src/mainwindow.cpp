@@ -195,8 +195,22 @@ void MainWindow::set_film_info(QString id_film)
     this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(15).toString()));
     this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(16).toString()));
     this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(17).toString()));
-    this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
-    this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
+
+    QSqlQuery get_film_age("SELECT age FROM age WHERE id = " + get_film.value(18).toString(), db);
+    if (get_film_age.isActive()) {
+        get_film_age.next();
+        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film_age.value(0).toString()));
+    } else {
+        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
+    }
+
+    QSqlQuery get_film_mpaa("SELECT mpaa FROM mpaa WHERE id = " + get_film.value(19).toString(), db);
+    if (get_film_mpaa.isActive()) {
+        get_film_mpaa.next();
+        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film_mpaa.value(0).toString()));
+    } else {
+        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
+    }
     this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
 }
 
