@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SoapOperaCard</class>
- <widget class="QFrame" name="SoapOperaCard">
+ <class>CinemaGenreCard</class>
+ <widget class="QFrame" name="CinemaGenreCard">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>355</width>
-    <height>200</height>
+    <width>477</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame {
+   <string notr="true">QFrame, QWidget {
 	border-radius: 25px;
     padding: 5px;
 	background-color: rgb(50, 50, 50);
 }
 
+QHBoxLayout, QTabBar, QScrollArea {
+	background-color: rgba(255, 255, 255, 0);
+}
+
 QLabel {
-	font: 25 18pt &quot;Segoe UI Light&quot;;
+	font: 25 25pt &quot;Segoe UI Light&quot;;
 	color: rgb(255, 255, 255);
+	border: 0px solid rgba(255, 255, 255, 0); 
+	border-radius: 25px;
 	background-color: rgba(255, 255, 255, 0);
 }
 
 QFrame:hover {
 	background-color: rgb(70, 70, 70);
-}</string>
+}
+
+</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>361</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>image</string>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="main"/>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

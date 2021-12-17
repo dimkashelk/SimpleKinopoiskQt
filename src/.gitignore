@@ -71,3 +71,4 @@ Thumbs.db
 *.dll
 *.exe
 
+build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/db.db
