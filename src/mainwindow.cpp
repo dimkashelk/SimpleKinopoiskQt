@@ -110,6 +110,9 @@ void MainWindow::init_cinema()
     }
 
     this->ui->tabWidget->setTabEnabled(2, false);
+
+    this->ui->to_collection->setMinimumHeight(this->height());
+    this->ui->to_genre_card->setMinimumHeight(this->height());
 }
 
 
