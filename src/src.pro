@@ -15,8 +15,7 @@ SOURCES += \
     clickedqlabel.cpp \
     main.cpp \
     mainwindow.cpp \
-    newscard.cpp \
-    soapoperacard.cpp
+    newscard.cpp
 
 HEADERS += \
     cinemacard.h \
@@ -24,15 +23,13 @@ HEADERS += \
     clickableqtextedit.h \
     clickedqlabel.h \
     mainwindow.h \
-    newscard.h \
-    soapoperacard.h
+    newscard.h
 
 FORMS += \
     cinemacard.ui \
     cinemagenrecard.ui \
     mainwindow.ui \
-    newscard.ui \
-    soapoperacard.ui
+    newscard.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
