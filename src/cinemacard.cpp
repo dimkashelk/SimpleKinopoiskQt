@@ -2,6 +2,7 @@
 #include "ui_cinemacard.h"
 #include <QPainter>
 
+
 CinemaCard::CinemaCard(QWidget *parent) :
     QFrame(parent),
     ui(new Ui::CinemaCard)
@@ -13,7 +14,6 @@ CinemaCard::~CinemaCard()
 {
     delete ui;
 }
-
 
 CinemaCard::CinemaCard(QImage image, QString id, QWidget *parent) :
     QFrame(parent),

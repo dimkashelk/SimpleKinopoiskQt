@@ -48,6 +48,10 @@ private:
     void clicked_on_card_film();
 
     void set_info_news_show(NewsCard *card);
+    
+    void init_popular();
+    
+    void init_new_news();
 
     bool news_info = false;
 
