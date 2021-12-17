@@ -3,6 +3,7 @@
 #include "newscard.h"
 #include "cinemacard.h"
 #include "cinemagenrecard.h"
+#include "soapoperacard.h"
 #include <Qt>
 #include <QSqlDatabase>
 #include <QImage>
