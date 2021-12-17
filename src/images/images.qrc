@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>films.png</file>
+        <file>main-page.png</file>
+        <file>soap-opera.png</file>
+        <file>white-arrow-left.png</file>
+        <file>white-arrow-right.png</file>
+    </qresource>
+</RCC>
