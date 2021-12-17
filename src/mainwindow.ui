@@ -64,7 +64,7 @@ QTabWidget::pane {
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -93,7 +93,7 @@ QTabWidget::pane {
         <item>
          <widget class="QStackedWidget" name="stackedWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="news_list">
            <property name="styleSheet">
@@ -126,8 +126,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>20</height>
+                   <width>486</width>
+                   <height>506</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -159,8 +159,8 @@ QTabWidget::pane {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>20</height>
+                   <width>486</width>
+                   <height>506</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -344,7 +344,16 @@ QPushButton:hover {
       </widget>
       <widget class="QWidget" name="cinema">
        <property name="styleSheet">
-        <string notr="true">QTabBar {	
+        <string notr="true">QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: rgb(70, 70, 70);
+}
+
+QTabBar {	
 	background-color: rgba(255, 255, 255, 0);
 	padding: 10px;
 	border-radius: 10px;
@@ -535,7 +544,7 @@ QScrollBar::add-line:horizontal
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1042</width>
+                     <width>982</width>
                      <height>452</height>
                     </rect>
                    </property>
@@ -549,10 +558,56 @@ QScrollBar::add-line:horizontal
                 </item>
                </layout>
               </item>
+              <item>
+               <widget class="QPushButton" name="to_genre_card">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-right.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-right.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
             <widget class="QWidget" name="genre_card">
              <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <widget class="QPushButton" name="to_collection">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>500</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-left.png</normaloff>../build-src-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/white-arrow-left.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>50</width>
+                  <height>50</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
@@ -572,7 +627,7 @@ QScrollBar::add-line:horizontal
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1042</width>
+                     <width>982</width>
                      <height>484</height>
                     </rect>
                    </property>

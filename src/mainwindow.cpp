@@ -108,6 +108,8 @@ void MainWindow::init_cinema()
         connect(new_card, &CinemaGenreCard::clicked, this, &MainWindow::change_cinema_widget);
         connect(new_card, &CinemaGenreCard::clicked_on_film, this, &MainWindow::change_film_widget);
     }
+
+    this->ui->tabWidget->setTabEnabled(2, false);
 }
 
 
@@ -152,6 +154,8 @@ void MainWindow::set_film_info(QString id_film)
         }
         delete item;
     }
+
+    this->ui->film_form->setVerticalSpacing(10);
 
     QSqlQuery get_film("SELECT title, " // 0 название
                        "description, "  // 1 описание
@@ -212,6 +216,8 @@ void MainWindow::set_film_info(QString id_film)
         this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
     }
     this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
+
+    this->ui->tabWidget->setTabEnabled(2, true);
 }
 
 
