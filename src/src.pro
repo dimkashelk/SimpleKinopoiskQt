@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     cinemacard.cpp \
+    cinemagenrecard.cpp \
     clickableqtextedit.cpp \
     clickedqlabel.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     cinemacard.h \
+    cinemagenrecard.h \
     clickableqtextedit.h \
     clickedqlabel.h \
     mainwindow.h \
@@ -27,6 +29,7 @@ HEADERS += \
 
 FORMS += \
     cinemacard.ui \
+    cinemagenrecard.ui \
     mainwindow.ui \
     newscard.ui \
     soapoperacard.ui

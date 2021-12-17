@@ -26,6 +26,10 @@ private slots:
 
     void on_forward_clicked();
 
+    void on_to_genre_card_clicked();
+
+    void on_to_collection_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -35,8 +39,18 @@ private:
 
     void change_widget();
 
+    void change_cinema_widget();
+
+    void change_film_widget();
+
+    void set_film_info(QString id_film);
+
+    void clicked_on_card_film();
+
     void set_info_news_show(NewsCard *card);
 
     bool news_info = false;
+
+    void init_cinema();
 };
 #endif // MAINWINDOW_H

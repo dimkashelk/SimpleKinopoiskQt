@@ -13,10 +13,27 @@ class CinemaCard : public QFrame
 
 public:
     explicit CinemaCard(QWidget *parent = nullptr);
+
+    CinemaCard(QImage image, QString title, QWidget *parent = nullptr);
+
     ~CinemaCard();
+
+    void paintEvent(QPaintEvent *event);
+
+    void mousePressEvent(QMouseEvent *mouseEvent);
+
+    QString get_id_film();
+
+signals:
+
+    void clicked();
 
 private:
     Ui::CinemaCard *ui;
+
+    QPixmap background;
+
+    QString id_film;
 };
 
 #endif // CINEMACARD_H
