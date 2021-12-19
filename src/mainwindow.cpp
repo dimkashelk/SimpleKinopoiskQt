@@ -209,21 +209,14 @@ void MainWindow::set_film_info(QString id_film)
                        "year, "         // 3 год производства
                        "slogan, "       // 4 слоган
                        "country, "      // 5 страна производства
-                       "director, "     // 6 режиссер
-                       "screenwriter, " // 7 сценарий
-                       "producer, "     // 8 продюсер
-                       "operator, "     // 9 оператор
-                       "composer, "     // 10 композитор
-                       "artist, "       // 11 художник
-                       "mounting, "     // 12 монтаж
-                       "money_usa, "    // 13 сбора в США
-                       "money_world, "  // 14 сборы в мире
-                       "money_ru, "     // 15 сборы в России
-                       "premier_ru, "   // 16 премьера в России
-                       "premier_world, "// 17 премьера в мире
-                       "age, "          // 18 возрастное ограничение минкульт
-                       "mpaa, "         // 19 рейтинг MPAA
-                       "time "          // 20 продолжительность
+                       "money_usa, "    // 6 сбора в США
+                       "money_world, "  // 7 сборы в мире
+                       "money_ru, "     // 8 сборы в России
+                       "premier_ru, "   // 9 премьера в России
+                       "premier_world, "// 10 премьера в мире
+                       "age, "          // 11 возрастное ограничение минкульт
+                       "mpaa, "         // 12 рейтинг MPAA
+                       "time "          // 13 продолжительность
                        "FROM films WHERE id = " + id_film, db);
     get_film.next();
     this->ui->film_name->setText(get_film.value(0).toString());
@@ -233,35 +226,70 @@ void MainWindow::set_film_info(QString id_film)
     this->ui->film_form->addRow(new QLabel("Год производства"), new QLabel(get_film.value(3).toString()));
     this->ui->film_form->addRow(new QLabel("Слоган"), new QLabel(get_film.value(4).toString()));
     this->ui->film_form->addRow(new QLabel("Страна"), new QLabel(get_film.value(5).toString()));
-    this->ui->film_form->addRow(new QLabel("Режиссёр"), new QLabel(get_film.value(6).toString()));
-    this->ui->film_form->addRow(new QLabel("Сценарий"), new QLabel(get_film.value(7).toString()));
-    this->ui->film_form->addRow(new QLabel("Продюсер"), new QLabel(get_film.value(8).toString()));
-    this->ui->film_form->addRow(new QLabel("Оператор"), new QLabel(get_film.value(9).toString()));
-    this->ui->film_form->addRow(new QLabel("Композитор"), new QLabel(get_film.value(10).toString()));
-    this->ui->film_form->addRow(new QLabel("Художник"), new QLabel(get_film.value(11).toString()));
-    this->ui->film_form->addRow(new QLabel("Монтаж"), new QLabel(get_film.value(12).toString()));
-    this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(13).toString()));
-    this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(14).toString()));
-    this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(15).toString()));
-    this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(16).toString()));
-    this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(17).toString()));
 
-    QSqlQuery get_film_age("SELECT age FROM age WHERE id = " + get_film.value(18).toString(), db);
+    QSqlQuery get_involved("SELECT id_person FROM involved WHERE id_film = " + id_film, db);
+    QList<QString> involved;
+    while (get_involved.next()) {
+        involved.append(get_involved.value(0).toString());
+    }
+
+    QList<QString> directors;
+    QList<QString> screenwriters;
+    QList<QString> producers;
+    QList<QString> operators;
+    QList<QString> composers;
+    QList<QString> artists;
+    QList<QString> mountings;
+    for (auto i: involved) {
+        QSqlQuery get_person("SELECT first_name, second_name, role FROM persons WHERE id = " + i, db);
+        get_person.next();
+        if (get_person.value(2).toString() == "1") {
+            directors.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "2") {
+            screenwriters.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "3") {
+            producers.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "4") {
+            operators.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "5") {
+            composers.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "6") {
+            artists.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        } else if (get_person.value(2).toString() == "7") {
+            mountings.append(get_person.value(0).toString() + " " + get_person.value(1).toString());
+        }
+    }
+
+    this->ui->film_form->addRow(new QLabel("Режиссёр"), new QLabel(get_string_to_insert(directors)));
+    this->ui->film_form->addRow(new QLabel("Сценарий"), new QLabel(get_string_to_insert(screenwriters)));
+    this->ui->film_form->addRow(new QLabel("Продюсер"), new QLabel(get_string_to_insert(producers)));
+    this->ui->film_form->addRow(new QLabel("Оператор"), new QLabel(get_string_to_insert(operators)));
+    this->ui->film_form->addRow(new QLabel("Композитор"), new QLabel(get_string_to_insert(composers)));
+    this->ui->film_form->addRow(new QLabel("Художник"), new QLabel(get_string_to_insert(artists)));
+    this->ui->film_form->addRow(new QLabel("Монтаж"), new QLabel(get_string_to_insert(mountings)));
+
+    this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(6).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(7).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(8).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(9).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(10).toString()));
+
+    QSqlQuery get_film_age("SELECT age FROM age WHERE id = " + get_film.value(11).toString(), db);
     if (get_film_age.isActive()) {
         get_film_age.next();
         this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film_age.value(0).toString()));
     } else {
-        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(18).toString()));
+        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(11).toString()));
     }
 
-    QSqlQuery get_film_mpaa("SELECT mpaa FROM mpaa WHERE id = " + get_film.value(19).toString(), db);
+    QSqlQuery get_film_mpaa("SELECT mpaa FROM mpaa WHERE id = " + get_film.value(12).toString(), db);
     if (get_film_mpaa.isActive()) {
         get_film_mpaa.next();
         this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film_mpaa.value(0).toString()));
     } else {
-        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(19).toString()));
+        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(12).toString()));
     }
-    this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(20).toString()));
+    this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(13).toString()));
 
     this->ui->tabWidget->setTabEnabled(2, true);
 }
@@ -275,6 +303,7 @@ void MainWindow::clicked_on_card_film()
     this->ui->tabWidget->setCurrentIndex(2);
 }
 
+
 void MainWindow::on_to_genre_card_clicked()
 {
     this->ui->cinema_stacked->setCurrentIndex(1);
@@ -284,4 +313,20 @@ void MainWindow::on_to_genre_card_clicked()
 void MainWindow::on_to_collection_clicked()
 {
     this->ui->cinema_stacked->setCurrentIndex(0);
+}
+
+
+QString MainWindow::get_string_to_insert(QList<QString> values)
+{
+    QString to_ins_string;
+    if (values.size() == 0) {
+        to_ins_string = "—";
+    } else {
+        to_ins_string = values[0];
+        values.removeFirst();
+        for (auto i: values) {
+            to_ins_string = to_ins_string + ", " + i;
+        }
+    }
+    return to_ins_string;
 }

@@ -57,5 +57,7 @@ private:
     bool news_info = false;
 
     void init_cinema();
+
+    QString get_string_to_insert(QList<QString> values);
 };
 #endif // MAINWINDOW_H
