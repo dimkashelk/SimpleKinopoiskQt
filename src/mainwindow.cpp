@@ -208,15 +208,14 @@ void MainWindow::set_film_info(QString id_film)
                        "image, "        // 2 постер
                        "year, "         // 3 год производства
                        "slogan, "       // 4 слоган
-                       "country, "      // 5 страна производства
-                       "money_usa, "    // 6 сбора в США
-                       "money_world, "  // 7 сборы в мире
-                       "money_ru, "     // 8 сборы в России
-                       "premier_ru, "   // 9 премьера в России
-                       "premier_world, "// 10 премьера в мире
-                       "age, "          // 11 возрастное ограничение минкульт
-                       "mpaa, "         // 12 рейтинг MPAA
-                       "time "          // 13 продолжительность
+                       "money_usa, "    // 5 сбора в США
+                       "money_world, "  // 6 сборы в мире
+                       "money_ru, "     // 7 сборы в России
+                       "premier_ru, "   // 8 премьера в России
+                       "premier_world, "// 9 премьера в мире
+                       "age, "          // 10 возрастное ограничение минкульт
+                       "mpaa, "         // 11 рейтинг MPAA
+                       "time "          // 12 продолжительность
                        "FROM films WHERE id = " + id_film, db);
     get_film.next();
     this->ui->film_name->setText(get_film.value(0).toString());
@@ -225,7 +224,19 @@ void MainWindow::set_film_info(QString id_film)
 
     this->ui->film_form->addRow(new QLabel("Год производства"), new QLabel(get_film.value(3).toString()));
     this->ui->film_form->addRow(new QLabel("Слоган"), new QLabel(get_film.value(4).toString()));
-    this->ui->film_form->addRow(new QLabel("Страна"), new QLabel(get_film.value(5).toString()));
+
+    QSqlQuery get_countries("SELECT id_country FROM country_film WHERE id_film = " + id_film, db);
+    QList<QString> countries;
+    while (get_countries.next()) {
+        countries.append(get_countries.value(0).toString());
+    }
+    QList<QString> country;
+    for (auto i: countries) {
+        QSqlQuery get_country("SELECT country FROM countries WHERE id = " + i, db);
+        get_country.next();
+        country.append(get_country.value(0).toString());
+    }
+    this->ui->film_form->addRow(new QLabel("Страна"), new QLabel(get_string_to_insert(country)));
 
     QSqlQuery get_involved("SELECT id_person FROM involved WHERE id_film = " + id_film, db);
     QList<QString> involved;
@@ -268,28 +279,28 @@ void MainWindow::set_film_info(QString id_film)
     this->ui->film_form->addRow(new QLabel("Художник"), new QLabel(get_string_to_insert(artists)));
     this->ui->film_form->addRow(new QLabel("Монтаж"), new QLabel(get_string_to_insert(mountings)));
 
-    this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(6).toString()));
-    this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(7).toString()));
-    this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(8).toString()));
-    this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(9).toString()));
-    this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(10).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в США"), new QLabel(get_film.value(5).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в мире"), new QLabel(get_film.value(6).toString()));
+    this->ui->film_form->addRow(new QLabel("Сборы в России"), new QLabel(get_film.value(7).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в России"), new QLabel(get_film.value(8).toString()));
+    this->ui->film_form->addRow(new QLabel("Премьера в мире"), new QLabel(get_film.value(9).toString()));
 
-    QSqlQuery get_film_age("SELECT age FROM age WHERE id = " + get_film.value(11).toString(), db);
+    QSqlQuery get_film_age("SELECT age FROM age WHERE id = " + get_film.value(10).toString(), db);
     if (get_film_age.isActive()) {
         get_film_age.next();
         this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film_age.value(0).toString()));
     } else {
-        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(11).toString()));
+        this->ui->film_form->addRow(new QLabel("Возрастное ограничение"), new QLabel(get_film.value(10).toString()));
     }
 
-    QSqlQuery get_film_mpaa("SELECT mpaa FROM mpaa WHERE id = " + get_film.value(12).toString(), db);
+    QSqlQuery get_film_mpaa("SELECT mpaa FROM mpaa WHERE id = " + get_film.value(11).toString(), db);
     if (get_film_mpaa.isActive()) {
         get_film_mpaa.next();
         this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film_mpaa.value(0).toString()));
     } else {
-        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(12).toString()));
+        this->ui->film_form->addRow(new QLabel("Рейтинг MPAA"), new QLabel(get_film.value(11).toString()));
     }
-    this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(13).toString()));
+    this->ui->film_form->addRow(new QLabel("Продолжительность"), new QLabel(get_film.value(12).toString()));
 
     this->ui->tabWidget->setTabEnabled(2, true);
 }
